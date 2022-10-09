@@ -2,11 +2,9 @@
 @use '../../utilityClasses' as utils;
 @use '../../mediaQuery' as media;
 
-.container{
-    margin-top: var.$NavHeight;
-}
 
 .searchContainer{
+    margin-top: var.$NavHeight;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,7 +93,4 @@
     }
 }
 
-.mainContainer{
-    background: var.$grey-color;
-}
 
