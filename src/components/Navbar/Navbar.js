@@ -1,6 +1,6 @@
 import React from 'react'
 import {MdShoppingCart} from 'react-icons/md'
-import styles from './navbar.module.scss';
+import styles from './Navbar.module.scss';
 
 
 const Navbar = () => {
@@ -27,19 +27,7 @@ const Navbar = () => {
 }
 
 
-// <div className="navBar">
-// <ul className="navBar__menu">
-//     <li className="navBar__logo"><h2><a href="#" className="navBar__link link">Shopeefy</a></h2></li>
-//     <li className="navBar__user">
-//         <div className="navBar__user__pic">
-//             <img src="./images/profile.jpg" alt="profilepic" />
-//         </div>
-//         <div className="navBar__user__name">Akshay Tambe</div>
-//     </li>
-//     <li>cart</li>
-// </ul>
 
-// </div>
 
 
 export default Navbar

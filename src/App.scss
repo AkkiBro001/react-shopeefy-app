@@ -21,3 +21,10 @@ ul{
     color: var.$light-color;
     display: inline-block;
 }
+
+.mainBody{
+    background: var.$grey-color;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5em 2em;
+}

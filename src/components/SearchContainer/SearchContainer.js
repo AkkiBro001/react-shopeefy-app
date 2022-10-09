@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './container.module.scss';
+import styles from './SearchContainer.module.scss';
 import { BsSearch } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
 
@@ -9,7 +9,9 @@ const SearchContainer = () => {
     <div className={styles.searchContainer}>
       <div className={styles.searchBar}>
         <BsSearch className={styles.searchIcon} />
+        <form>
         <input type="text" placeholder='Search Product' />
+        </form>
         <AiFillCloseCircle className={styles.closeIcon} />
       </div>
 

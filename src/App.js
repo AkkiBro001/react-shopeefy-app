@@ -1,7 +1,7 @@
 import './App.css';
 
 
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 
 
 
