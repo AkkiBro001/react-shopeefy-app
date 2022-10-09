@@ -74,13 +74,11 @@
 
     .serchRelated, .searchRelated__List{
         display: flex;
+        gap: 0.5em;
         align-items: center;
-        gap: 0.5em
     }
 
-    .serchRelated{
-        flex-shrink: 0;
-    }
+   
 
     .searchRelated__List{
         flex-wrap: wrap;

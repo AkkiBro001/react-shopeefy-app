@@ -19,10 +19,15 @@ const Container = () => {
           </h2>
 
           <div className={styles.serchRelated}>
-            <p className={styles.serchRelated__lable}>Related : </p>
+            <p className={styles.serchRelated__lable}>Related: </p>
             <ul className={styles.searchRelated__List}>
                 <li><a href='#' className='link'>Bata</a></li>
                 <li><a href='#' className='link'>Woodland</a></li>
+                <li><a href='#' className='link'>Fila</a></li>
+                <li><a href='#' className='link'>Fila</a></li>
+                <li><a href='#' className='link'>Fila</a></li>
+                <li><a href='#' className='link'>Fila</a></li>
+                <li><a href='#' className='link'>Fila</a></li>
                 <li><a href='#' className='link'>Fila</a></li>
                 
             </ul>
