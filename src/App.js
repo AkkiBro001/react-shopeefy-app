@@ -1,17 +1,14 @@
 import './App.css';
+import Container from './components/Container/Container';
+import Navbar from './components/Navbar/Navbar';
+
 
 
 function App() {
   return (
     <>
-    <h2>Shopeefy</h2>
-    <ul>
-      <li><a href="#">Tesst</a></li>
-      <li><a href="#">Tesst</a></li>
-      <li><a href="#">Tesst</a></li>
-      <li><a href="#">Tesst</a></li>
-      
-    </ul>
+      <Navbar/>
+      <Container/>
     </>
   );
 }

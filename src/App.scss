@@ -1,5 +1,10 @@
-@use './variables' as variable;
+@use './variables' as var;
 @use './utilityClasses' as utils;
+
+
+body{
+    font-family: var.$global-font;
+}
 
 *{
     margin: 0;
@@ -7,14 +12,12 @@
     box-sizing: border-box;
 }
 
-body{
-    font-family: variable.$global-font;
-}
-
 ul{
-    @include utils.resetUL;
+    list-style: none;
 }
 
-a{
-    @include utils.resetAnchor;
+.link{
+    text-decoration: none;
+    color: var.$light-color;
+    display: inline-block;
 }
