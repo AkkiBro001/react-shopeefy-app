@@ -1,0 +1,11 @@
+@use './variables' as variable;
+
+@mixin resetUL{
+    list-style: none;
+}
+
+@mixin resetAnchor {
+    text-decoration: none;
+    color: variable.$light-color;
+    display: inline-block;
+}
