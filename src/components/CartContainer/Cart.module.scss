@@ -1,0 +1,141 @@
+@use '../../variables' as var;
+@use '../../utilityClasses' as utils;
+.CartContainer{
+    background: var.$light-color;
+    padding: 1em;
+    border-radius: var.$bd-radius;
+    width: min(1300px, 100%);
+    margin: 0 auto;
+
+    .header{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 0.5em;
+
+        h2{
+            font-size: 2.3rem;
+            
+        }
+
+        p{
+            color: darken( var.$grey-color, 20);
+            font-size: 1.1rem;
+        }
+    }
+
+
+}
+
+
+.Cart__list{
+    .Cart__item{
+        border-top: 1px solid var.$grey-color;
+        padding: 1em 0;
+        display: flex;
+        gap: 1.5em;
+    }
+
+    .Cart__image{
+        height: 250px;
+
+        img{
+            height: 100%;
+        }
+    }
+
+    .Cart__details{
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        gap: 15em;
+
+        .item_details{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+
+            .title{
+                font-size: 1.5rem;
+            }
+
+            .desc{
+                color: darken(var.$grey-color, 30) ;
+
+            }
+
+            .rating_like{
+                display: flex;
+                align-items: center;
+                gap: 1em;
+            }
+
+            .rating, .like{
+                @extend .rating_like;
+                line-height: 0;
+                gap: 0.25em;
+                font-size: 1.2rem;
+
+                .star{
+                    color: var.$yellow-color;
+                }
+
+                .heart{
+                    color: var.$red-color;
+                }
+            }
+
+            .quantity{
+                margin-top: auto;
+                display: flex;
+                gap: 1em;
+            }
+
+            @include utils.cart_counter('.itemConter');
+
+            
+
+            .itemDelete{
+                background-color: var.$red-color;
+                color: var.$light-color;
+                border: none;
+                padding: 0.25em 0.75em;
+                border-radius: var.$bd-radius;
+                font-weight: 400;
+                letter-spacing: 1px;
+                display: flex;
+                align-items: center;
+                gap: 0.25em;
+                cursor: pointer;
+
+                svg{
+                    font-size: 1.1rem;
+                    line-height: 0;
+                }
+            }
+        }
+
+        .item_price{
+            font-size: 1.5rem;
+        }
+    }
+
+    
+
+
+    .Cart__subtotal{
+        @extend .Cart__item;
+        justify-content: flex-end;
+        font-size: 1.2rem;
+        align-items: center;
+        gap: 0.25em;
+
+        h3{
+            
+            margin-left: 0.25em;
+            font-size: 2rem !important;
+        }   
+
+    }
+}
+
