@@ -1,5 +1,16 @@
 @use './variables' as var;
 @use './utilityClasses' as utils;
+@use './mediaQuery' as media;
+
+
+:root{
+
+    // --MainHeaderheight: 225px;
+    --MainHeaderheight: 80px;
+
+   
+}
+
 
 
 body{
@@ -23,10 +34,41 @@ ul{
     display: inline-block;
 }
 
+.mainHeader{
+  position: fixed;
+   width: 100%;
+   top:0;
+   left: 0;
+   z-index: 1000;
+   height: var(--MainHeaderheight);
+   background: green;
+}
+
 .mainBody{
+    margin-top: var(--MainHeaderheight);
     background: var.$light-grey-color;
     display: flex;
     flex-wrap: wrap;
     padding: 1.5em 2em;
-    gap: 1em;
+    gap: var.$filterAndCardsContainerGap;
+    align-items: flex-start;
+
+    @include media.desktop1000{
+        flex-direction: column;
+    }
+   
 }
+
+.cartMain{
+    margin-top: var(--MainHeaderheight);
+    background: var.$light-grey-color;
+    padding: 1.5em 2em;
+}
+
+@include media.desktop1000{
+    :root{
+    --MainHeaderheight: 320px;
+    }
+}  
+
+ 

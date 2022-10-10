@@ -1,11 +1,16 @@
 @use '../../variables' as var;
 @use '../../utilityClasses' as utils;
+@use "../../mediaQuery" as media;
 
 .filterContainer{
-    width: min(300px, 100%);
+    width: min(var.$filterContainerWidth, 100%);
     background: var.$light-color;
     overflow: hidden;
     border-radius: var.$bd-radius;
+
+    @include media.desktop1000{
+        width: 100%;
+    }
 }
 
 .filterList + .filterList{

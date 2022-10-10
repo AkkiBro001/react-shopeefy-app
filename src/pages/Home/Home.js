@@ -6,8 +6,11 @@ import CardsContainer from "../../components/CardsContainer/CardsContainer"
 const Home = () => {
   return (
     <>
+    <div className="mainHeader">
+
     <Navbar/>
     <SearchContainer/>
+    </div>
     <div className="mainBody">
       <FilterContainer/>
       <CardsContainer/>

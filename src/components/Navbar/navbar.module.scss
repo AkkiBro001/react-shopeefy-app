@@ -2,11 +2,6 @@
 @use '../../mediaQuery' as media;
 
 .navBar{
-   position: fixed;
-   width: 100%;
-   top:0;
-   left: 0;
-
    .navBar__menu{
     display: flex;
     background-color: var.$primary-color;
