@@ -28,7 +28,7 @@
         align-items: center;
         box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
         overflow: hidden;
-        border-radius: 5px;
+        border-radius: var.$bd-radius;
 
         @include media.desktop1000{
             transform: translateY(50%);

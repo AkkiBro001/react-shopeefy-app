@@ -1,5 +1,7 @@
 import SearchContainer from "../../components/SearchContainer/SearchContainer"
 import Navbar from "../../components/Navbar/Navbar"
+import FilterContainer from "../../components/Filter/FilterContainer"
+import CardsContainer from "../../components/CardsContainer/CardsContainer"
 
 const Home = () => {
   return (
@@ -7,7 +9,8 @@ const Home = () => {
     <Navbar/>
     <SearchContainer/>
     <div className="mainBody">
-      asdsad
+      <FilterContainer/>
+      <CardsContainer/>
     </div>
     </>
   )

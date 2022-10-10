@@ -4,6 +4,7 @@
 
 body{
     font-family: var.$global-font;
+    color: var.$dark-color;
 }
 
 *{
@@ -27,4 +28,5 @@ ul{
     display: flex;
     flex-wrap: wrap;
     padding: 1.5em 2em;
+    gap: 1em;
 }
