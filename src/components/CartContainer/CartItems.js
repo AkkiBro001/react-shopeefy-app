@@ -27,7 +27,7 @@ const CartItems = () => {
               <div className={styles.quantity}>
                 <div className={styles.itemConter}>
                   <button>-</button>
-                  <input type="number" min="1" />
+                  <input type="text" min="1"/>
                   <button>+</button>
                 </div>
                 <button className={styles.itemDelete}>
