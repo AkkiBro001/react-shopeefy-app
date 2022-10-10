@@ -1,5 +1,7 @@
 import styles from './Cart.module.scss'
 import CartItems from './CartItems'
+import {BsArrowLeft} from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 const CartContainer = () => {
   return (
@@ -15,7 +17,8 @@ const CartContainer = () => {
         <CartItems/>
 
         <li className={styles.Cart__subtotal}>
-          <span>Subtotal (3 items):</span> <h3>$512</h3>
+          <Link to="/react-shopeefy-app" className={styles.backToHome}><BsArrowLeft/> <span>back to home page</span></Link>
+          <span className={styles.subtotalLable}>Subtotal (3 items):</span> <h3>$512</h3>
         </li>
       </ul>
     </div>

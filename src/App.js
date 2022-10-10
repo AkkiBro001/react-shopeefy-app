@@ -11,7 +11,7 @@ function App() {
     <>
     <Routes>
       <Route path="/react-shopeefy-app" element={<Home />}/>
-      <Route path="/react-shopeefy-app/cart" element={<Cart />}/>
+      <Route path="/react-shopeefy-app/:page" element={<Cart />}/>
       
     </Routes>
     </>

@@ -56,9 +56,15 @@ ul{
 }
 
 .cartMain{
-    // margin-top: var(--MainHeaderheight);
+    margin-top: var.$NavHeight;
     background: var.$light-grey-color;
     padding: 1.5em 2em;
+    display: flex;
+    gap: 1em;
+    
+    @include media.desktop1000{
+        flex-wrap: wrap;
+    }
 }
 
 
