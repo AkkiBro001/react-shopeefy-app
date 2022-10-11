@@ -70,7 +70,10 @@
     box-shadow: 0 0 5px rgba(0,0,0,0.10);
     position: relative;
     outline: none;
-   
+    
+    @include media.tablet768{
+        width: var.$cardWidthTablet;
+    }
 
 
     .card__img {
@@ -132,6 +135,17 @@
         .price{
             font-size: 1.5rem;
             color: var.$primary-color;
+        }
+
+        .size{
+            display: flex;
+            align-items: center;
+            color: darken(var.$grey-color, 30);
+            gap: 0.5em;
+
+            select{
+                padding: 0.25em 0.5em;
+            }
         }
 
         .like{

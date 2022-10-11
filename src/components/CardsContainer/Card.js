@@ -23,7 +23,17 @@ const Card = () => {
             </div>
             <div className={styles.cards__product__price}>
                 <span className={styles.price}>$590</span>
-                <span className={styles.like}><AiFillHeart/>150</span>
+                <div className={styles.size}>
+                    <label htmlFor="size">Size</label>
+                    <select id="size">
+                        <option value="S">S</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+                {/* <span className={styles.like}><AiFillHeart/>150</span> */}
             </div>
 
             <div className={styles.cards__addToCard}>

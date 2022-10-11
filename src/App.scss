@@ -12,6 +12,7 @@ body{
     font-family: var.$global-font;
     color: var.$dark-color;
     background: var.$light-grey-color;
+   
 }
 
 *{
@@ -80,7 +81,7 @@ ul{
 
 @include media.desktop1000{
     :root{
-        --serachSectionHight: 220px
+        --serachSectionHight: 240px
     }
     
 }

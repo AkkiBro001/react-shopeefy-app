@@ -11,9 +11,7 @@ const CartItems = () => {
           <div className={styles.Cart__details}>
             <div className={styles.item_details}>
               <h3 className={styles.title}>Mortein 2 In 1 Mosquito And Cockroach Killer Spray - 400Ml</h3>
-              <div className={styles.desc}>
-                Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.
-              </div>
+              
               <div className={styles.rating_like}>
                   <div className={styles.rating}>
                     <span className={styles.star}><AiFillStar/></span>
@@ -22,8 +20,20 @@ const CartItems = () => {
                   <div className={styles.like}>
                     <span className={styles.heart}><AiFillHeart/></span>
                     <span className={styles.text}>150</span>
+                    
                   </div>
               </div>
+              <div className={styles.size}>
+                    <label htmlFor="size">Size</label>
+                    <select id="size">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                        
+                    </select>
+                </div>
               <div className={styles.quantity}>
                 <div className={styles.itemConter}>
                   <button>-</button>

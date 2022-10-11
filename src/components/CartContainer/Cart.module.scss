@@ -47,14 +47,18 @@
     }
 
     .Cart__image{
-        width: 150px;
+        width: 200px;
         flex-shrink: 0;
         img{
             width: 100%;
         }
 
+        @include media.tablet768{
+            width: 150px;
+        }
+
         @include media.mobile600{
-            width: 100px;
+            width: 120px;
         }
 
         
@@ -79,7 +83,7 @@
         .item_details{
             display: flex;
             flex-direction: column;
-            gap: 1em;
+            gap: 1.5em;
 
             .title{
                 font-size: 1.5rem;
@@ -94,12 +98,7 @@
                 
             }
 
-            .desc{
-                color: darken(var.$grey-color, 30) ;
-                @include media.mobile600{
-                    display: none;
-                }
-            }
+          
 
             .rating_like{
                 display: flex;
@@ -131,6 +130,17 @@
 
                 .heart{
                     color: var.$red-color;
+                }
+            }
+
+            .size{
+                display: flex;
+                align-items: center;
+                color: darken(var.$grey-color, 30);
+                gap: 0.5em;
+                font-weight: bold;
+                select{
+                    padding: 0.25em 0.5em;
                 }
             }
 
