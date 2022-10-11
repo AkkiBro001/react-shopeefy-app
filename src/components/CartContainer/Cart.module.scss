@@ -6,7 +6,10 @@
     background: var.$light-color;
     padding: 1em;
     border-radius: var.$bd-radius;
-    width: min(1200px, 100%);
+    width: min(1500px, 100%);
+    
+
+   
 
     @include media.desktop1000{
         width: 100%;
@@ -76,6 +79,7 @@
 
         @include media.mobile600{
             gap: 1.3em;
+            
         }
 
 

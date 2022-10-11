@@ -75,6 +75,7 @@ ul{
     @include media.mobile600{
         flex-wrap: wrap;
         padding: 0;
+        // padding: 0.75em;
     }
 }
 
