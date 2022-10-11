@@ -4,8 +4,21 @@
     }
 }
 
+@mixin mobile600 {
+    @media screen and (max-width:600px){
+        @content;
+    }
+}
+
 @mixin desktop1000 {
     @media screen and (max-width:1000px){
+        @content;
+    }
+}
+
+
+@mixin tablet768 {
+    @media screen and (max-width:768px){
         @content;
     }
 }

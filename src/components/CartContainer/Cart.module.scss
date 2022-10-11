@@ -21,6 +21,10 @@
 
         h2{
             font-size: 2.3rem;
+
+            @include media.tablet768{
+                font-size: 1.9rem;
+            }
             
         }
 
@@ -39,15 +43,21 @@
         border-top: 1px solid var.$grey-color;
         padding: 1em 0;
         display: flex;
-        gap: 1.5em;
+        gap: 1em;
     }
 
     .Cart__image{
-        height: 250px;
-
+        width: 150px;
+        flex-shrink: 0;
         img{
-            height: 100%;
+            width: 100%;
         }
+
+        @include media.mobile600{
+            width: 100px;
+        }
+
+        
     }
 
     .Cart__details{
@@ -56,6 +66,16 @@
         justify-content: space-between;
         gap: 3em;
 
+        @include media.tablet768{
+            gap: 1.5em;
+        }
+
+        @include media.mobile600{
+            gap: 1.3em;
+        }
+
+
+
         .item_details{
             display: flex;
             flex-direction: column;
@@ -63,17 +83,33 @@
 
             .title{
                 font-size: 1.5rem;
+
+                @include media.tablet768{
+                    font-size: 1.2rem;
+                }
+
+                @include media.mobile600{
+                    font-size: 1.1rem;
+                }
+                
             }
 
             .desc{
                 color: darken(var.$grey-color, 30) ;
-
+                @include media.mobile600{
+                    display: none;
+                }
             }
 
             .rating_like{
                 display: flex;
                 align-items: center;
                 gap: 1em;
+
+                @include media.mobile600{
+                    flex-direction: column
+                }
+                
             }
 
             .rating, .like{
@@ -81,6 +117,13 @@
                 line-height: 0;
                 gap: 0.25em;
                 font-size: 1.2rem;
+
+                @include media.mobile600{
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    font-size: 1rem;
+                    align-self: flex-start;
+                }
 
                 .star{
                     color: var.$yellow-color;
@@ -95,6 +138,12 @@
                 margin-top: auto;
                 display: flex;
                 gap: 1em;
+
+                @include media.mobile600{
+                    flex-direction: column;
+                    align-items: flex-start
+                    
+                }
             }
 
             @include utils.cart_counter('.itemConter');
@@ -123,6 +172,10 @@
 
         .item_price{
             font-size: 1.5rem;
+
+            @include media.tablet768{
+                font-size: 1.3rem;
+            }
         }
     }
 
@@ -136,6 +189,10 @@
         align-items: center;
         gap: 0.25em;
 
+        @include media.mobile600{
+            font-size: 1rem;;
+        }
+
         .subtotalLable{
             margin-left: auto;
         }
@@ -143,7 +200,15 @@
         h3{
             
             margin-left: 0.25em;
-            font-size: 2rem !important;
+            font-size: 2rem;
+
+            @include media.mobile600{
+                font-size: 1.7rem;
+            }
+
+            @include media.mobile500{
+                font-size: 1.6rem;
+            }
         }
         
         .backToHome{
@@ -156,6 +221,10 @@
 
             &:hover, &:focus{
                 text-decoration: underline;
+            }
+
+            @include media.mobile500{
+                font-size: 0.85rem;
             }
             
         }

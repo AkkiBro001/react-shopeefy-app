@@ -52,6 +52,11 @@ ul{
     @include media.desktop1000{
         flex-direction: column;
     }
+
+    @include media.mobile500{
+        
+        padding: 1.5em 1em;
+    }
    
 }
 
@@ -65,6 +70,11 @@ ul{
     @include media.desktop1000{
         flex-wrap: wrap;
     }
+
+    @include media.mobile600{
+        flex-wrap: wrap;
+        padding: 0;
+    }
 }
 
 
@@ -74,3 +84,5 @@ ul{
     }
     
 }
+
+

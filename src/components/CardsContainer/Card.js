@@ -26,19 +26,19 @@ const Card = () => {
                 <span className={styles.like}><AiFillHeart/>150</span>
             </div>
 
-            {/* <div className={styles.cards__addToCard}>
+            <div className={styles.cards__addToCard}>
                 <button className={styles.cards__addToCart}>
                     <span className={styles.cart}>
                         <MdShoppingCart/>
                     </span>
                     <span>Add to cart</span>
                 </button>
-                <div className={styles.cards__addToCart__counter}>
+                {/* <div className={styles.cards__addToCart__counter}>
                     <button>-</button>
-                    <input type="number" min="1"/>
+                    <input type="text" min="1"/>
                     <button>+</button>
-                </div>
-            </div> */}
+                </div> */}
+            </div>
         </div>
     </a>
   )
