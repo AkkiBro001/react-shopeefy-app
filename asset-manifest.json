@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-shopeefy-app/static/css/main.f9cb98f8.css",
+    "main.js": "/react-shopeefy-app/static/js/main.5a8353dd.js",
+    "index.html": "/react-shopeefy-app/index.html",
+    "main.f9cb98f8.css.map": "/react-shopeefy-app/static/css/main.f9cb98f8.css.map",
+    "main.5a8353dd.js.map": "/react-shopeefy-app/static/js/main.5a8353dd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f9cb98f8.css",
+    "static/js/main.5a8353dd.js"
+  ]
+}
