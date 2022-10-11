@@ -73,17 +73,33 @@
     
     @include media.tablet768{
         width: var.$cardWidthTablet;
+
     }
 
+    @include media.mobile500{
+        width: var.$cardWidthMobile;
+        font-size: 0.95rem;
+    }
+    
 
     .card__img {
         overflow: hidden;
         height: calc(var.$cardWidth * var.$cardHeightRatio);
 
+        @include media.tablet768{
+            height: calc(var.$cardWidthTablet * var.$cardHeightRatioTablet);
+        }
+
+        @include media.mobile500{
+            height: calc(var.$cardWidthMobile * var.$cardHeightRatioMobile);
+        }
+
         img {
             width: 100%;
             object-fit: cover;
             object-position: top;
+            -webkit-object-fit: cover;
+            -webkit-object-position: top;
         }
 
         
@@ -95,7 +111,7 @@
         background-color: var.$light-color;
         display: flex;
         flex-direction: column;
-        gap: 0.35em;
+        gap: 0.75em;
     }
 
     .cards__product {
