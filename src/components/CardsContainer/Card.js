@@ -27,7 +27,7 @@ const Card = () => {
             </div>
             <div className={styles.cards__product__price}>
                 <span className={styles.price}>$590</span>
-                <div className={styles.size}>
+                <div className="size__dropdown">
                     <label htmlFor="size">Size</label>
                     <select id="size">
                         <option value="S">S</option>

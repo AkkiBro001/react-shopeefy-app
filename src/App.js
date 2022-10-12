@@ -6,8 +6,6 @@ import PageNotFound from './pages/PageNotFound';
 import Product from './pages/Product';
 
 
-
-
 function App() {
   return (
     <>
@@ -18,7 +16,6 @@ function App() {
           <Route path="product/:id" element={<Product />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
-
       </Routes>
     </>
   );

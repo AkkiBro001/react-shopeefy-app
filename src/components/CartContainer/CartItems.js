@@ -23,7 +23,7 @@ const CartItems = () => {
                     
                   </div>
               </div>
-              <div className={styles.size}>
+              <div className={`${styles.size__dropdown__bold} size__dropdown`}>
                     <label htmlFor="size">Size</label>
                     <select id="size">
                         <option value="S">S</option>

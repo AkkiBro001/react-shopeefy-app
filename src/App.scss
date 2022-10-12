@@ -31,6 +31,17 @@ ul{
     display: inline-block;
 }
 
+.size__dropdown{
+    display: flex;
+    align-items: center;
+    color: darken(var.$grey-color, 30);
+    gap: 0.5em;
+
+    select{
+        padding: 0.25em 0.5em;
+    }
+}
+
 .mainHeader{
   position: fixed;
    width: 100%;
@@ -64,6 +75,10 @@ ul{
 .productMain{
     margin-top: var.$NavHeight;
     padding: 1.5em 2em;
+
+    @include media.mobile600{
+        padding:0;
+    }
 }
 
 .cartMain{

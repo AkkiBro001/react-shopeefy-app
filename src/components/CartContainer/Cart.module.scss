@@ -6,7 +6,7 @@
     background: var.$light-color;
     padding: 1em;
     border-radius: var.$bd-radius;
-    width: min(1500px, 100%);
+    width: min(2000px, 100%);
     
 
    
@@ -137,15 +137,8 @@
                 }
             }
 
-            .size{
-                display: flex;
-                align-items: center;
-                color: darken(var.$grey-color, 30);
-                gap: 0.5em;
+            .size__dropdown__bold{
                 font-weight: bold;
-                select{
-                    padding: 0.25em 0.5em;
-                }
             }
 
             .quantity{
@@ -252,7 +245,7 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-    flex: 1 0 340px;
+    flex: 1 0 320px;
 
 
     @include media.desktop1000{
