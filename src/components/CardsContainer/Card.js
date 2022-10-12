@@ -1,16 +1,20 @@
 import styles from './CardsContainer.module.scss';
 import {AiFillStar, AiFillHeart} from 'react-icons/ai';
 import {MdShoppingCart} from 'react-icons/md';
+import { Link } from 'react-router-dom';
+
 
 const Card = () => {
   return (
-    <a href='#' className={`${styles.card} link`}>
+    <div className={`${styles.card}`}>
         <div className={styles.card__img}>
+    <Link to='/react-shopeefy-app/product/1' className='link'>
             <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" />
+    </Link>
         </div>
         <div className={styles.cards__details}>
             <div className={styles.cards__product}>
-                <h3>Addidas Shoes</h3>
+            <Link to='/react-shopeefy-app/product/1' className={`link ${styles.title}`}><h3>Addidas Shoes</h3></Link>
                 <div className={styles.rating}>
                     <span className={styles.star}>
                         <AiFillStar/>
@@ -50,7 +54,7 @@ const Card = () => {
                 </div> */}
             </div>
         </div>
-    </a>
+    </div>
   )
 }
 

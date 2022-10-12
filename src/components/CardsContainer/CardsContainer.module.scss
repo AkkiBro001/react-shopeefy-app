@@ -105,6 +105,14 @@
         
     }
 
+    .title{
+        color: var.$dark-color;
+
+        &:hover{
+            color: darken(var.$primary-color, 10)
+        }
+    }
+
 
     .cards__details {
         padding: 0.75em;

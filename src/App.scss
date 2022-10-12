@@ -61,6 +61,11 @@ ul{
    
 }
 
+.productMain{
+    margin-top: var.$NavHeight;
+    padding: 1.5em 2em;
+}
+
 .cartMain{
     margin-top: var.$NavHeight;
     background: var.$light-grey-color;
