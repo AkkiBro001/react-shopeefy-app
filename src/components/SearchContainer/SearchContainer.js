@@ -1,22 +1,18 @@
 import React from 'react'
 import styles from './SearchContainer.module.scss';
-import { BsSearch } from 'react-icons/bs'
-import { AiFillCloseCircle } from 'react-icons/ai'
 
-const SearchContainer = () => {
+
+const SearchContainer = ({search}) => {
+
+  if(!search) return null;
+
   return (
 
     <div className={styles.searchContainer}>
-      <div className={styles.searchBar}>
-        <BsSearch className={styles.searchIcon} />
-        <form>
-        <input type="text" placeholder='Search Product' />
-        </form>
-        <AiFillCloseCircle className={styles.closeIcon} />
-      </div>
+     
 
       <h2 className={styles.serchResult}>
-        Addidas
+        {search}
       </h2>
 
       <div className={styles.serchRelated}>

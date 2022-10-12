@@ -8,6 +8,7 @@
     height: var.$NavHeight;
     align-items: center;
     padding: 0 2em;
+    position: relative;
    }
 
    .navBar__logo{
@@ -19,6 +20,61 @@
     }
     
    }
+
+   .searchBar{
+    width: min(90%, 450px);
+    position: absolute;
+    transform: translateX(-50%) translateY(50%);
+    left: 50%;
+    bottom: 0;
+    z-index: 1000;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border-radius: var.$bd-radius;
+
+    @include media.desktop1000{
+        bottom: -40px;
+    }
+   
+
+    form{
+        width: 100%;
+        height: 100%;
+    }
+
+    input{
+        width: 100%;
+        height: 100%;
+        padding: 0.5em 2.5em;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .searchIcon, .closeIcon{
+        position: absolute;
+        font-size: 1.2rem;
+    }
+
+    .searchIcon{
+        color: var.$dark-color;
+        margin-left: 0.75em;
+        opacity: 0.8;
+    }
+
+    .closeIcon{
+        color: var.$dark-color;
+        right: 0;
+        margin-right: 0.75em;
+        color: var.$grey-color;
+        cursor: pointer;
+    }
+
+    
+}
 
    .navBar__user{
     display: flex;
