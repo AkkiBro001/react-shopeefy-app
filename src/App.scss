@@ -79,6 +79,35 @@ ul{
     }
 }
 
+.notFound{
+    display: flex;
+    height: calc(100vh - var.$NavHeight);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+
+    h2{
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        
+        svg{
+            color: var.$yellow-color;
+            line-height: 0;
+            font-size: 6rem;
+            
+        }
+    }
+
+    a{
+        font-size: 1.3rem;
+        color: darken(var.$grey-color, 30);
+    }
+}
+
 
 @include media.desktop1000{
     :root{
