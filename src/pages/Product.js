@@ -6,12 +6,12 @@ import ProductContainer from '../components/Product/ProductContainer'
 
 
 
-const Product = () => {
+const Product = ({hideSearch}) => {
     return (
         <>
             <div className="mainHeader">
 
-                <Navbar />
+                <Navbar hideSearch = {hideSearch}/>
 
             </div>
             <div className="productMain">

@@ -12,10 +12,10 @@ function App() {
       <Routes>
         <Route path="/react-shopeefy-app">
           <Route index element={<Home />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="product/:id" element={<Product />} />
+          <Route path="cart" element={<Cart hideSearch={true}/>} />
+          <Route path="product/:id" element={<Product hideSearch={true}/>} />
         </Route>
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound hideSearch={true}/>} />
       </Routes>
     </>
   );

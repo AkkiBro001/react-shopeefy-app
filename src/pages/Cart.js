@@ -4,13 +4,13 @@ import CartContainer from "../components/CartContainer/CartContainer";
 import CartAside from "../components/CartContainer/CartAside";
 
 
-const Cart = () => {
+const Cart = ({hideSearch}) => {
 
   return (
     <>
     <div className="mainHeader">
 
-    <Navbar/>
+    <Navbar hideSearch={hideSearch}/>
    
     </div>
     <div className="cartMain">

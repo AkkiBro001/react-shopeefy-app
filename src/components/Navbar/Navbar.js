@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
@@ -8,12 +8,25 @@ import profile from '../../images/profile.jpg'
 
 
 const Navbar = (props) => {
+   
+   const [scroll, setScroll] = useState(window.scrollY)
+   
+   function handleScroll(){
+        setScroll(window.scrollY)
+   }
 
+   useEffect(()=>{
+   if(props.hideSearch) return
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+   }, [scroll])
+ 
+   console.log(!props.search && scroll > 100)
    return (
         <div className={styles.navBar}>
             <ul className={styles.navBar__menu}>
                 <li className={styles.navBar__logo}><h2><Link to="/react-shopeefy-app" className='link'>Shopeefy</Link></h2></li>
-               <li className={styles.searchBar}>
+               {props.hideSearch ? null : <li className={`${styles.searchBar} ${!props.search && scroll > 100 ? styles.hideOnScroll : ""}`}>
                     
                         <BsSearch className={styles.searchIcon} />
                         <form>
@@ -26,7 +39,7 @@ const Navbar = (props) => {
                             onClick={()=>props.setSearch("")}
                         /> : null}
                     
-                </li>
+                </li>}
                 <li className={styles.navBar__user}>
                     <div className={styles.navBar__user__pic}>
                         <img className={styles.img} src={profile} alt="profilepic" />
