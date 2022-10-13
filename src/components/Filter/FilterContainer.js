@@ -7,6 +7,12 @@ const RATING = 5;
 
 const FilterContainer = ({category}) => {
   const [hideFilter, setHideFilter] = useState(false)
+
+  function handleInput(e){
+    e.preventDefault()
+    
+  }
+
   return (
     <div className={styles.filterContainer}>
         <ul className={styles.filterMenu}>
@@ -14,7 +20,7 @@ const FilterContainer = ({category}) => {
             <li className={styles.filterList}>
             <div className={styles.filterHeader} style={{height:'26px'}}>
                     <span>Filter</span>
-                    <button>Reset</button>
+                    <button name="reset" onClick={handleInput}>Reset</button>
             </div>
             </li>
             <li className={styles.filterList}>
@@ -32,8 +38,11 @@ const FilterContainer = ({category}) => {
 
                 {/* Price Section */}
                 {!hideFilter && <div className={styles.filterBody}>
-                    <input type="range" id="#price" name="price"/>
-                    <div className={styles.priceLable}>Max. $1000</div>
+                    <input type="range" id="price" name="price" onChange={handleInput} min="10" step="5" max="1000"/>
+                    <div className={styles.priceLable}>
+                    <span>{`> $10`}</span>
+                    <span>Max : $1000</span>
+                    </div>
                 </div>}
             </li>
 

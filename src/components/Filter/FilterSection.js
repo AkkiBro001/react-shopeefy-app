@@ -42,7 +42,7 @@ const FilterSection = ({ header, body }) => {
                                 <div className={`${styles.filterBody} checkBoxList`} key={data}>
                                     <div className={styles.checkList}>
                                         <input type="checkbox" id={data} name="name" value={data} />
-                                        <label className={styles.priceLable} htmlFor={data}>{titleCase(data)}</label>
+                                        <label htmlFor={data}>{titleCase(data)}</label>
                                     </div>
 
                                 </div>
@@ -54,9 +54,9 @@ const FilterSection = ({ header, body }) => {
                                 <div className={`${styles.filterBody} checkBoxList`} key={data}>
                                     <div className={styles.checkList}>
                                         <input type="checkbox" id={data} name="name" value={data} />
-                                        <label className={`${styles.priceLable} ${styles.star}`} htmlFor={data}>{
+                                        <label className={styles.star} htmlFor={data}>{
                                             Array.from({length: data}, (_, i) => data - i).map(
-                                                num => <AiFillStar />
+                                                num => <AiFillStar key={num}/>
                                             )
                                             }</label>
                                     </div>

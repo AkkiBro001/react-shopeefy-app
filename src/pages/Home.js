@@ -10,11 +10,7 @@ const Home = () => {
   const {state, dispatch, category} = GobalContextData()
  
   const [search, setSearch] = useState("")
-  // const [filter, setFilter] = useState({category:[], price:25, rating:[]})
-  
-  // useEffect(()=>{
-  //   dispatch({type: ACTION.Search_Filter_Sort, payload: {search}})
-  // }, [search])
+ 
   
   return (
     <>
