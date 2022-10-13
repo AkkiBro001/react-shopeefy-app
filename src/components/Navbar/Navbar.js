@@ -21,7 +21,7 @@ const Navbar = (props) => {
     return () => window.removeEventListener('scroll', handleScroll)
    }, [scroll])
  
-   console.log(!props.search && scroll > 100)
+   
    return (
         <div className={styles.navBar}>
             <ul className={styles.navBar__menu}>
