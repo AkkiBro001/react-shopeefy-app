@@ -5,13 +5,9 @@ import {MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp} from 'react-icons/
 
 const RATING = 5;
 
-const FilterContainer = ({category}) => {
+const FilterContainer = ({category, filter, handleFilter}) => {
   const [hideFilter, setHideFilter] = useState(false)
 
-  function handleInput(e){
-    e.preventDefault()
-    
-  }
 
   return (
     <div className={styles.filterContainer}>
@@ -20,7 +16,7 @@ const FilterContainer = ({category}) => {
             <li className={styles.filterList}>
             <div className={styles.filterHeader} style={{height:'26px'}}>
                     <span>Filter</span>
-                    <button name="reset" onClick={handleInput}>Reset</button>
+                    <button name="reset" onClick={handleFilter}>Reset</button>
             </div>
             </li>
             <li className={styles.filterList}>
@@ -38,17 +34,17 @@ const FilterContainer = ({category}) => {
 
                 {/* Price Section */}
                 {!hideFilter && <div className={styles.filterBody}>
-                    <input type="range" id="price" name="price" onChange={handleInput} min="10" step="5" max="1000"/>
+                    <input type="range" id="price" name="price" onChange={handleFilter} min="10" step="5" max="1000" value={filter.price}/>
                     <div className={styles.priceLable}>
-                    <span>{`> $10`}</span>
+                    <span>{`< $${filter.price}`}</span>
                     <span>Max : $1000</span>
                     </div>
                 </div>}
             </li>
 
             {/* //*Filter List */}
-            <FilterSection header="Category" body={category}/> 
-            <FilterSection header="Rating" body={RATING}/> 
+            <FilterSection header="Category" body={category} filter={filter} handleFilter={handleFilter}/> 
+            <FilterSection header="Rating" body={RATING} filter={filter} handleFilter={handleFilter}/> 
             
         </ul>
     </div>

@@ -21,7 +21,38 @@ function reducer(states, action){
       case ACTION.LoadAllData: 
           return action.payload;
       case ACTION.Search_Filter_Sort:
-          return states 
+          const {search, filter, sort} = action.payload
+          //!Grab Clone Data
+          const mainData = JSON.parse(JSON.stringify(initData))
+          const updatedArr = mainData.filter(data => {
+            //!1. Search
+            if(data.title.toLowerCase().includes(search.toLowerCase()) || 
+            data.description.toLowerCase().includes(search.toLowerCase())){
+              return data
+            }
+          }).filter(data => {
+            
+            //!2. filter
+            if(data.price <= parseInt(filter.price)
+              && (filter.category.includes(data.category) || filter.category.length === 0)
+              && (filter.rate.includes(Math.round(data.rating.rate).toString()) || filter.rate.length === 0)
+              ){
+                
+              return data
+            }
+          })
+
+          if(sort === "priceLow"){
+            updatedArr.sort((a, b) => {return a.price - b.price})
+          }else if(sort === "priceHigh"){
+            updatedArr.sort((a, b) => {return b.price - a.price})
+          }else if(sort === "rate"){
+            updatedArr.sort((a, b) => {return b.rating.rate - a.rating.rate})
+          }
+
+          return updatedArr;
+        
+
 
       default: return states;
 

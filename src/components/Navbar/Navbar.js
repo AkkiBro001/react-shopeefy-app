@@ -20,7 +20,8 @@ const Navbar = (props) => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
    }, [scroll])
- 
+   
+   
    
    return (
         <div className={styles.navBar}>

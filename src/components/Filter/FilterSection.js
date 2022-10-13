@@ -4,7 +4,7 @@ import {AiFillStar} from 'react-icons/ai'
 import { useState } from 'react';
 
 
-const FilterSection = ({ header, body }) => {
+const FilterSection = ({ header, body, filter, handleFilter}) => {
 
     const [hideFilter, setHideFilter] = useState(false)
 
@@ -41,7 +41,10 @@ const FilterSection = ({ header, body }) => {
                             return (
                                 <div className={`${styles.filterBody} checkBoxList`} key={data}>
                                     <div className={styles.checkList}>
-                                        <input type="checkbox" id={data} name="name" value={data} />
+                                        <input type="checkbox" id={data} name="category" value={data} 
+                                        onChange={handleFilter} 
+                                        checked = {filter.category.includes(data)}
+                                        />
                                         <label htmlFor={data}>{titleCase(data)}</label>
                                     </div>
 
@@ -50,10 +53,14 @@ const FilterSection = ({ header, body }) => {
                         })
                         :!hideFilter && header === "Rating" ? Array.from({length: body}, (_, i) => body - i).map(
                            data => {
+                            
                             return (
                                 <div className={`${styles.filterBody} checkBoxList`} key={data}>
                                     <div className={styles.checkList}>
-                                        <input type="checkbox" id={data} name="name" value={data} />
+                                        <input type="checkbox" id={data} name="rate" value={data} 
+                                            onChange={handleFilter} 
+                                            checked = {filter.rate.includes(data.toString())}
+                                        />
                                         <label className={styles.star} htmlFor={data}>{
                                             Array.from({length: data}, (_, i) => data - i).map(
                                                 num => <AiFillStar key={num}/>
