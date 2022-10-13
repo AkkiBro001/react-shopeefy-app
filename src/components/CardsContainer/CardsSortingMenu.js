@@ -10,8 +10,10 @@ const CardsSortingMenu = () => {
         <div className={styles.cards_sorting}>
             <span>Sort By</span>
             <select name="sort" id="sort" className={styles.sort}>
+                <option value="category" className={styles.option}>Category</option>
+                <option value="priceLow" className={styles.option}>Price: Low to High</option>
+                <option value="priceHigh" className={styles.option}>Price: High to Low</option>
                 <option value="rate" className={styles.option}>Rating</option>
-                <option value="price" className={styles.option}>Price</option>
                 <option value="polpular" className={styles.option}>Popular</option>
             </select>
         </div>

@@ -19,6 +19,10 @@
 
 .filterList{
     padding: 1em;
+
+    .filterBody:not(:first-child){
+        margin-top: 0.6em;
+    }
 }
 
 .filterHeader{
