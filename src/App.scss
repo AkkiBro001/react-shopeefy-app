@@ -2,11 +2,9 @@
 @use './utilityClasses' as utils;
 @use './mediaQuery' as media;
 
-
 :root{
-    --serachSectionHight: 150px
+    --searchContainerHeight: 0px;
 }
-
 
 body{
     font-family: var.$global-font;
@@ -53,7 +51,7 @@ ul{
 }
 
 .mainBody{
-    margin-top: calc(var.$NavHeight + var(--serachSectionHight));
+    margin-top: calc(var.$NavHeight +  var(--searchContainerHeight));
     background: var.$light-grey-color;
     display: flex;
     flex-wrap: wrap;
@@ -128,13 +126,14 @@ ul{
     }
 }
 
-.mainBody.hideSearchOption{margin-top: var.$NavHeight;}
+.mainBody.hideSearchOption{
+    margin-top: var.$NavHeight;
 
-@include media.desktop1000{
-    :root{
-        --serachSectionHight: 240px
+    @include media.desktop1000{
+        margin-top: 140px
     }
-    
 }
+
+
 
 

@@ -24,9 +24,9 @@
    .searchBar{
     width: min(90%, 450px);
     position: absolute;
-    transform: translateX(-50%) translateY(50%);
+    transform: translateX(-50%);
     left: 50%;
-    bottom: 0;
+    
     z-index: 1000;
     height: 2.5rem;
     display: flex;
@@ -36,7 +36,8 @@
     border-radius: var.$bd-radius;
 
     @include media.desktop1000{
-        bottom: -40px;
+        
+        bottom: -60px;
     }
    
 
@@ -71,6 +72,10 @@
         margin-right: 0.75em;
         color: var.$grey-color;
         cursor: pointer;
+
+        &:hover{
+            color: var.$red-color;
+        }
     }
 
     

@@ -4,17 +4,16 @@
 
 
 .searchContainer{
-    
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: var(--serachSectionHight);
     position: relative;
     justify-content: center;
     background: var.$light-color;
     box-shadow: 0px 3px 4px transparentize(var.$dark-color, 0.8);
     @include media.desktop1000{
-        padding: 5em 1em 1.5em;
+        padding: 4em 1em 1.5em;
     }
 
     
@@ -48,9 +47,5 @@
 }
 
 
-.hideSerchResult{
-    height: 0;
-    padding: 0;
-}
 
 
