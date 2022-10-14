@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 
 const FilterSection = ({ header, body, filter, handleFilter}) => {
-
+    
     const [hideFilter, setHideFilter] = useState(false)
 
     function titleCase(str) {

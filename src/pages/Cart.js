@@ -5,7 +5,7 @@ import CartAside from "../components/CartContainer/CartAside";
 
 
 const Cart = ({hideSearch}) => {
-
+  
   return (
     <>
     <div className="mainHeader">

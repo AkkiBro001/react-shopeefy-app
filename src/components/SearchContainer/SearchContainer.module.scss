@@ -23,16 +23,28 @@
         margin-bottom: 0.25em;
     }
 
-    .serchRelated, .searchRelated__List{
+    .serchRelated{
         display: flex;
         gap: 0.5em;
-        align-items: center;
+        align-items: flex-start;
+        @include media.mobile600{
+            flex-direction: column;
+            
+        }
+
+        p{
+            font-weight: 600;
+            color: darken(var.$grey-color, 40);
+        }
     }
 
    
 
     .searchRelated__List{
+        display: flex;
+        gap: 0.5em;
         flex-wrap: wrap;
+        
        
     }
 

@@ -9,6 +9,7 @@ export const ACTION = {
 const DataTransfer = createContext()
 
 const DataContext = ({children}) => {
+  
 //!Store initial Data from server
  const [initData, setInitData] = useState([]) 
  const [category, setCategory] = useState([]) 
@@ -65,6 +66,7 @@ function reducer(states, action){
 
 
 async function fetchData () {
+
   const Product = await fetch('https://fakestoreapi.com/products')
   .then(res => res.json())
   .then(data => data);
@@ -78,6 +80,7 @@ async function fetchData () {
       setInitData(JSON.parse(JSON.stringify(data)))
       dispatch({type: ACTION.LoadAllData, payload: data})
       setCategory(JSON.parse(JSON.stringify(category)))
+      
   })
 }
 
@@ -91,7 +94,7 @@ useEffect(()=>{
 
 
   return (
-    <DataTransfer.Provider value={{dispatch, state, category}}>
+    <DataTransfer.Provider value={{dispatch, state, category, initData}}>
       {children}
     </DataTransfer.Provider>
   )

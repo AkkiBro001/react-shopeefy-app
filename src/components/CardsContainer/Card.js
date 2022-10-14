@@ -16,7 +16,7 @@ const Card = (data) => {
             </div>
             <div className={styles.cards__details}>
                 <div className={styles.cards__product}>
-                    <Link to={`/react-shopeefy-app/product/${id}`} className={`link ${styles.title}`}><h3>{title}</h3></Link>
+                    <Link to={`/react-shopeefy-app/product/${id}`} className={`link ${styles.title}`} title={title}><h3>{title}</h3></Link>
                     <div className={styles.rating}>
                         <span className={styles.star}>
                             <AiFillStar />

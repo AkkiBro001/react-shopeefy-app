@@ -7,7 +7,7 @@ import styles from './Navbar.module.scss';
 import profile from '../../images/profile.jpg'
 
 
-const Navbar = (props) => {
+const Navbar = ({search, setSearch, hideSearch}) => {
    
    const [scroll, setScroll] = useState(window.scrollY)
    
@@ -16,7 +16,7 @@ const Navbar = (props) => {
    }
 
    useEffect(()=>{
-   if(props.hideSearch) return
+   if(hideSearch) return
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
    }, [scroll])
@@ -27,17 +27,17 @@ const Navbar = (props) => {
         <div className={styles.navBar}>
             <ul className={styles.navBar__menu}>
                 <li className={styles.navBar__logo}><h2><Link to="/react-shopeefy-app" className='link'>Shopeefy</Link></h2></li>
-               {props.hideSearch ? null : <li className={`${styles.searchBar} ${!props.search && scroll > 100 ? styles.hideOnScroll : ""}`}>
+               {hideSearch ? null : <li className={`${styles.searchBar} ${!search && scroll > 100 ? styles.hideOnScroll : ""}`}>
                     
                         <BsSearch className={styles.searchIcon} />
                         <form>
                             <input type="text" placeholder='Search Product' 
-                            value={props.search}
-                            onChange={(e)=>props.setSearch(e.target.value)}
+                            value={search}
+                            onChange={(e)=>setSearch(e.target.value)}
                             />
                         </form>
-                        {props.search ? <AiFillCloseCircle className={styles.closeIcon} 
-                            onClick={()=>props.setSearch("")}
+                        {search ? <AiFillCloseCircle className={styles.closeIcon} 
+                            onClick={()=>setSearch("")}
                         /> : null}
                     
                 </li>}

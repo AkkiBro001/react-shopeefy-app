@@ -7,19 +7,28 @@ import { GobalContextData } from "../DataContext";
 import { ACTION } from "../DataContext";
 
 const Home = () => {
+
+  
+
   const { state, dispatch, category } = GobalContextData()
 
   const [search, setSearch] = useState("")
+  const [relatedSearch, setRelatedSearch] = useState([])
   const [filter, setFilter] = useState({
     reset: false,
     price: 1000,
     category: [],
     rate: []
   })
-
+  
   const [sort, setSort] = useState("category")
 
+  function handleRealatedSearch(e){
+    
+  }
+  
   function handleFilter(e) {
+    
     const { name, value } = e.target;
     setFilter((preVal) => {
       if (name === 'reset') {
@@ -53,7 +62,9 @@ const Home = () => {
   }
 
   useEffect(()=>{
+    
     dispatch({type: ACTION.Search_Filter_Sort, payload: {search, filter, sort}})
+    
   }, [search, filter, sort])
 
   
@@ -62,7 +73,7 @@ const Home = () => {
     <>
       <div className="mainHeader">
         <Navbar setSearch={setSearch} search={search} />
-        <SearchContainer search={search} />
+        <SearchContainer search={search} state={state} handleRealatedSearch={handleRealatedSearch}/>
       </div>
       <div className={`mainBody ${search ? '' : 'hideSearchOption'}`}>
         <FilterContainer category={category} filter={filter} handleFilter={handleFilter} />
