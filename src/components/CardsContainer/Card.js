@@ -9,7 +9,8 @@ const Card = (data) => {
     return (
         <div className={`${styles.card}`}>
             <div className={styles.card__img}>
-                <Link to={`/react-shopeefy-app/product/${id}`} className='link'>
+                <Link to={`/react-shopeefy-app/product/${id}`} className={`${styles.productImage} link`}>
+                    <span className={styles.like}><AiFillHeart/>{rating.count}</span>
                     <img src={image} alt="productImage" />
                 </Link>
             </div>
@@ -38,7 +39,7 @@ const Card = (data) => {
                             <option value="XXL">XXL</option>
                         </select>
                     </div> : null}
-                    {/* <span className={styles.like}><AiFillHeart/>150</span> */}
+                    {/*  */}
                 </div>
 
                 <div className={styles.cards__addToCard}>

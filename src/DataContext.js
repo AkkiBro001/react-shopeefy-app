@@ -24,7 +24,8 @@ function reducer(states, action){
           const {search, filter, sort} = action.payload
           //!Grab Clone Data
           const mainData = JSON.parse(JSON.stringify(initData))
-          const updatedArr = mainData.filter(data => {
+          // const relatedData = JSON.parse(JSON.stringify(initData))
+          const products = mainData.filter(data => {
             //!1. Search
             if(data.title.toLowerCase().includes(search.toLowerCase()) || 
             data.description.toLowerCase().includes(search.toLowerCase())){
@@ -42,15 +43,18 @@ function reducer(states, action){
             }
           })
 
+          //!4. sorting
           if(sort === "priceLow"){
-            updatedArr.sort((a, b) => {return a.price - b.price})
+            products.sort((a, b) => {return a.price - b.price})
           }else if(sort === "priceHigh"){
-            updatedArr.sort((a, b) => {return b.price - a.price})
+            products.sort((a, b) => {return b.price - a.price})
           }else if(sort === "rate"){
-            updatedArr.sort((a, b) => {return b.rating.rate - a.rating.rate})
+            products.sort((a, b) => {return b.rating.rate - a.rating.rate})
+          }else if(sort === "popular"){
+            products.sort((a, b) => {return b.rating.count - a.rating.count})
           }
 
-          return updatedArr;
+          return products;
         
 
 

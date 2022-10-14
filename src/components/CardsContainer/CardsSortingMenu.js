@@ -16,7 +16,7 @@ const CardsSortingMenu = ({sort, setSort, search, cardLength}) => {
                 <option value="priceLow" className={styles.option}>Price: Low to High</option>
                 <option value="priceHigh" className={styles.option}>Price: High to Low</option>
                 <option value="rate" className={styles.option}>Rating</option>
-                <option value="polpular" className={styles.option}>Popular</option>
+                <option value="popular" className={styles.option}>Popular</option>
             </select>
         </div>
     </div>
