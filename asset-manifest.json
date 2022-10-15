@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-shopeefy-app/static/css/main.6a0874e8.css",
-    "main.js": "/react-shopeefy-app/static/js/main.7aa084c2.js",
+    "main.js": "/react-shopeefy-app/static/js/main.da3accec.js",
     "static/media/profile.jpg": "/react-shopeefy-app/static/media/profile.0885089e6eba35cee67f.jpg",
     "index.html": "/react-shopeefy-app/index.html",
     "main.6a0874e8.css.map": "/react-shopeefy-app/static/css/main.6a0874e8.css.map",
-    "main.7aa084c2.js.map": "/react-shopeefy-app/static/js/main.7aa084c2.js.map"
+    "main.da3accec.js.map": "/react-shopeefy-app/static/js/main.da3accec.js.map"
   },
   "entrypoints": [
     "static/css/main.6a0874e8.css",
-    "static/js/main.7aa084c2.js"
+    "static/js/main.da3accec.js"
   ]
 }
