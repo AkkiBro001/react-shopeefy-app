@@ -15,6 +15,7 @@ const DataContext = ({children}) => {
 //!Store initial Data from server
  const [initData, setInitData] = useState([]) 
  const [category, setCategory] = useState([]) 
+ const [initialLoad, setInitialLoad] = useState(true);
 
  const path = useLocation().pathname;
  const lastPath = path.split('/')[path.split('/').length-1];
@@ -92,9 +93,12 @@ async function fetchData () {
       
       setInitData(JSON.parse(JSON.stringify(data)))
       
-      if(lastPath === 'react-shopeefy-app'){
+      if(initialLoad){
          dispatch({type: ACTION.LoadAllData, payload: data})
+         
+         setInitialLoad(false)
       }
+       
       setCategory(JSON.parse(JSON.stringify(category)))
   })
 }
