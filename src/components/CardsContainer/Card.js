@@ -6,6 +6,7 @@ import { ACTION, GobalContextData } from '../../DataContext';
 
 
 const Card = (data) => {
+    console.log(data)
     const {dispatch} = GobalContextData();
     const { id, title, price, description, category, image, rating } = data;
     return (
