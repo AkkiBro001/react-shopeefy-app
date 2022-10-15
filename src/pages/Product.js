@@ -13,7 +13,6 @@ const Product = ({hideSearch}) => {
     const [product, setProduct] = useState([])
     
     useEffect(()=>{
-        console.log(state)
         if(state.length === 0){
             fetch(`https://fakestoreapi.com/products/${id}`)
             .then(res => res.json()).then(data => setProduct([data]))

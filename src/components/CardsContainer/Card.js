@@ -12,7 +12,8 @@ const Card = (data) => {
     return (
         <div className={`${styles.card}`}>
             <div className={styles.card__img}>
-                <Link to={`/react-shopeefy-app/product/${id}`} className={`${styles.productImage} link`}>
+                <Link to={`/react-shopeefy-app/product/${id}`} className={`${styles.productImage} link`}
+                onClick={()=>dispatch({type: ACTION.Display_Product, payload: {id}})}>
                     <span className={styles.like}><AiFillHeart/>{rating.count}</span>
                     <img src={image} alt="productImage" />
                 </Link>

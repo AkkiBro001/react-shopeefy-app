@@ -22,7 +22,7 @@ const ProductContainer = ({ product, intialData, dispatch }) => {
             </div>
 
             <div className={styles.ProductDetails__details}>
-              <img src={image} alt="" className={styles.bgImage} />
+              <img src={image} alt="" className={styles.bgImage} style={{right: (title.includes('Samsung') || title.includes('Acer')) ? '-75px' : '0'}}/>
 
               <h3 className={styles.ProductDetails__details__name}>{title}</h3>
               <p className={styles.ProductDetails__details__desc}>{description.length > 300 ? description.slice(0, 300) + "..." : description}</p>
