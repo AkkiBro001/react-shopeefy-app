@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom';
 let TITLE_TEXT_LIMIT = 25
 let RELATED_PRODUCT_SHOW_LIMIT = 3;
 
-function getRelatedProduct (state, initData, search) {
+export function getRelatedProduct (state, initData, search) {
+  
+  if(!state) return null
   const initDataClone = JSON.parse(JSON.stringify(initData))
   const stateID = state.map(state => state.id)
   const isExactFindBySearch = initDataClone.some(

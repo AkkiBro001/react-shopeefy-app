@@ -2,9 +2,11 @@ import styles from './CardsContainer.module.scss';
 import { AiFillStar, AiFillHeart } from 'react-icons/ai';
 import { MdShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { ACTION, GobalContextData } from '../../DataContext';
 
 
 const Card = (data) => {
+    const {dispatch} = GobalContextData();
     const { id, title, price, description, category, image, rating } = data;
     return (
         <div className={`${styles.card}`}>
@@ -16,7 +18,10 @@ const Card = (data) => {
             </div>
             <div className={styles.cards__details}>
                 <div className={styles.cards__product}>
-                    <Link to={`/react-shopeefy-app/product/${id}`} className={`link ${styles.title}`} title={title}><h3>{title}</h3></Link>
+                    <Link to={`/react-shopeefy-app/product/${id}`} className={`link ${styles.title}`} title={title}
+                    onClick={()=>dispatch({type: ACTION.Display_Product, payload: {id}})}
+                    >
+                    <h3>{title}</h3></Link>
                     <div className={styles.rating}>
                         <span className={styles.star}>
                             <AiFillStar />

@@ -1,28 +1,35 @@
 import React, { createContext, useEffect, useReducer, useContext, useState } from 'react';
+import { AiOutlineCodepen } from 'react-icons/ai';
+import { useLocation } from 'react-router-dom';
 
 export const ACTION = {
   LoadAllData: 'loadalldata',
-  Search_Filter_Sort: 'search_filter_sort'
+  Search_Filter_Sort: 'search_filter_sort',
+  Display_Product: 'displayproduct'
 }
 
 
 const DataTransfer = createContext()
 
 const DataContext = ({children}) => {
-  
 //!Store initial Data from server
  const [initData, setInitData] = useState([]) 
  const [category, setCategory] = useState([]) 
 
+ const path = useLocation().pathname;
+ const lastPath = path.split('/')[path.split('/').length-1];
  
  const [state, dispatch] = useReducer(reducer, []);
 
 function reducer(states, action){
+    
     switch (action.type){
       case ACTION.LoadAllData: 
-          return action.payload;
+          { 
+            return action.payload;
+          }
       case ACTION.Search_Filter_Sort:
-          const {search, filter, sort} = action.payload
+          const {search, filter, sort} = action.payload;
           //!Grab Clone Data
           const mainData = JSON.parse(JSON.stringify(initData))
           // const relatedData = JSON.parse(JSON.stringify(initData))
@@ -46,6 +53,7 @@ function reducer(states, action){
 
           //!4. sorting
           if(sort === "priceLow"){
+            
             products.sort((a, b) => {return a.price - b.price})
           }else if(sort === "priceHigh"){
             products.sort((a, b) => {return b.price - a.price})
@@ -57,7 +65,11 @@ function reducer(states, action){
 
           return products;
         
-
+          case ACTION.Display_Product : 
+          {
+            const mainData = JSON.parse(JSON.stringify(initData))
+           return mainData.filter(data => data.id === parseInt(action.payload.id))
+          }
 
       default: return states;
 
@@ -77,10 +89,13 @@ async function fetchData () {
 
   Promise.all([Product, Category]).then(result => {
       const [data, category] = result;
-      setInitData(JSON.parse(JSON.stringify(data)))
-      dispatch({type: ACTION.LoadAllData, payload: data})
-      setCategory(JSON.parse(JSON.stringify(category)))
       
+      setInitData(JSON.parse(JSON.stringify(data)))
+      
+      if(lastPath === 'react-shopeefy-app'){
+         dispatch({type: ACTION.LoadAllData, payload: data})
+      }
+      setCategory(JSON.parse(JSON.stringify(category)))
   })
 }
 
@@ -88,8 +103,8 @@ async function fetchData () {
 //!Here fetch and Store data initial
 useEffect(()=>{
   fetchData();
-  
 }, [])
+
 
 
 

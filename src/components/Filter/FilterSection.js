@@ -2,10 +2,10 @@ import styles from './Filter.module.scss';
 import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from 'react-icons/md'
 import {AiFillStar} from 'react-icons/ai'
 import { useState } from 'react';
+import { BsCheckLg } from 'react-icons/bs';
 
 
 const FilterSection = ({ header, body, filter, handleFilter}) => {
-    
     const [hideFilter, setHideFilter] = useState(false)
 
     function titleCase(str) {
@@ -14,7 +14,7 @@ const FilterSection = ({ header, body, filter, handleFilter}) => {
         }).join(' ');
       }
 
-    
+      
 
     return (
         <>
@@ -53,7 +53,6 @@ const FilterSection = ({ header, body, filter, handleFilter}) => {
                         })
                         :!hideFilter && header === "Rating" ? Array.from({length: body}, (_, i) => body - i).map(
                            data => {
-                            
                             return (
                                 <div className={`${styles.filterBody} checkBoxList`} key={data}>
                                     <div className={styles.checkList}>

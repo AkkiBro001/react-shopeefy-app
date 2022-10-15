@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 
 const CardsContainer = ({state, sort, setSort, search}) => {
   const id = useParams();
-
   
   return (
     <div className={styles.cardsContainer}>

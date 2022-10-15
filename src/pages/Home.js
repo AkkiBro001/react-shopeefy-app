@@ -8,7 +8,6 @@ import { ACTION } from "../DataContext";
 
 const Home = () => {
 
-  
 
   const { state, dispatch, category } = GobalContextData()
 
@@ -62,9 +61,7 @@ const Home = () => {
   }
 
   useEffect(()=>{
-    
     dispatch({type: ACTION.Search_Filter_Sort, payload: {search, filter, sort}})
-    
   }, [search, filter, sort])
 
   

@@ -8,7 +8,6 @@ import profile from '../../images/profile.jpg'
 
 
 const Navbar = ({search, setSearch, hideSearch}) => {
-   
    const [scroll, setScroll] = useState(window.scrollY)
    
    function handleScroll(){
