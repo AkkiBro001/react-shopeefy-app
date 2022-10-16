@@ -17,8 +17,7 @@ const DataContext = ({children}) => {
  const [category, setCategory] = useState([]) 
  const [initialLoad, setInitialLoad] = useState(true);
 
- const path = useLocation().pathname;
- const lastPath = path.split('/')[path.split('/').length-1];
+
  
  const [state, dispatch] = useReducer(reducer, []);
 
@@ -113,7 +112,7 @@ useEffect(()=>{
 
 
   return (
-    <DataTransfer.Provider value={{dispatch, state, category, initData}}>
+    <DataTransfer.Provider value={{dispatch, state, category, initData, initialLoad}}>
       {children}
     </DataTransfer.Provider>
   )
