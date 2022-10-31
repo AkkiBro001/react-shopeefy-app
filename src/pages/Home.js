@@ -69,7 +69,7 @@ const Home = () => {
   return (
     <>
       <div className="mainHeader">
-        <Navbar setSearch={setSearch} search={search} />
+        <Navbar setSearch={setSearch} search={search} state={state}/>
         <SearchContainer search={search} state={state} handleRealatedSearch={handleRealatedSearch}/>
       </div>
       <div className={`mainBody ${search ? '' : 'hideSearchOption'}`}>

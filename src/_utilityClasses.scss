@@ -27,7 +27,6 @@
 
             &:hover, &:focus{
                 background-color: darken(var.$primary-color, 5);
-                transform: scale(1.05);
             }
         }
 

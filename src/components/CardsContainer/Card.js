@@ -3,12 +3,54 @@ import { AiFillStar, AiFillHeart } from 'react-icons/ai';
 import { MdShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { ACTION, GobalContextData } from '../../DataContext';
+import {useState, useEffect } from 'react';
+
+
 
 
 const Card = (data) => {
     
-    const {dispatch} = GobalContextData();
-    const { id, title, price, description, category, image, rating } = data;
+    const [showAddtoCartBtn, setShowAddtoCartBtn] = useState(true)
+    const [noOfitems, setNoOfitems] = useState(0)
+    const [sizes, setSizes] = useState("S")
+    const {dispatch, handleCart} = GobalContextData();
+
+    function handleAddToCart(e, id){
+        const {name, value} = e.target;
+        if(name === "addToCart"){
+
+            setShowAddtoCartBtn(false)
+            setNoOfitems(preVal => preVal+1)
+        }else if(name === "increment"){
+            setNoOfitems(preVal => preVal+1)
+        }else if(name === "decrement"){
+            setNoOfitems(preVal => {
+                if(preVal <= 1){
+                    setShowAddtoCartBtn(true)
+                    return 0;
+                }else{
+
+                    return preVal-1;
+                }
+            })
+        }
+        
+        
+    }
+
+    useEffect(()=>{
+        
+
+            handleCart(id, noOfitems, sizes)
+        
+        
+        
+    }, [noOfitems])
+    
+    
+    
+    const { id, title, price, description, category, image, rating, size } = data;
+    
     return (
         <div className={`${styles.card}`}>
             <div className={styles.card__img}>
@@ -36,9 +78,9 @@ const Card = (data) => {
                 </div>
                 <div className={styles.cards__product__price}>
                     <span className={styles.price}>${price}</span>
-                    {(category.includes('cloth') && !title.includes('Fjallraven')) ? <div className="size__dropdown">
-                        <label htmlFor="size">Size</label>
-                        <select id="size">
+                    {((size || category.includes('clothing')) && !title.includes('Fjallraven')) ? <div className="size__dropdown">
+                        <label htmlFor="size"> Size </label>
+                        <select id="size" onChange={(e)=>{setSizes(e.target.value); setNoOfitems(0)}} value={sizes}>
                             <option value="S">S</option>
                             <option value="L">L</option>
                             <option value="M">M</option>
@@ -46,21 +88,21 @@ const Card = (data) => {
                             <option value="XXL">XXL</option>
                         </select>
                     </div> : null}
-                    {/*  */}
+                    
                 </div>
 
                 <div className={styles.cards__addToCard}>
-                    <button className={styles.cards__addToCart}>
-                        <span className={styles.cart}>
+                {showAddtoCartBtn ? <button className={styles.cards__addToCart} onClick={(e)=>{handleAddToCart(e, id)}} name="addToCart">
+                        <span className={styles.cart} name="addToCart">
                             <MdShoppingCart />
                         </span>
-                        <span>Add to cart</span>
+                        <span onClick={handleAddToCart} name="addToCart">Add to cart</span>
                     </button>
-                    {/* <div className={styles.cards__addToCart__counter}>
-                    <button>-</button>
-                    <input type="text" min="1"/>
-                    <button>+</button>
-                </div> */}
+                     : <div className={styles.cards__addToCart__counter}>
+                    <button onClick={(e)=>handleAddToCart(e, id)} name='decrement'>-</button>
+                    <input type="text" min="0" max="100" value={noOfitems} onChange={handleAddToCart} name="number"/>
+                    <button onClick={(e)=>handleAddToCart(e, id)} name='increment'>+</button>
+                </div>}
                 </div>
             </div>
         </div>

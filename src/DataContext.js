@@ -1,11 +1,13 @@
 import React, { createContext, useEffect, useReducer, useContext, useState } from 'react';
 import { AiOutlineCodepen } from 'react-icons/ai';
+import { MdImageNotSupported } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 
 export const ACTION = {
   LoadAllData: 'loadalldata',
   Search_Filter_Sort: 'search_filter_sort',
-  Display_Product: 'displayproduct'
+  Display_Product: 'displayproduct',
+  Cart_Update: 'cartupdate'
 }
 
 
@@ -15,17 +17,30 @@ const DataContext = ({children}) => {
 //!Store initial Data from server
  const [initData, setInitData] = useState([]) 
  const [category, setCategory] = useState([]) 
+ const [state, dispatch] = useReducer(reducer, []);
+ const [cart, setCart] = useState([])
  const [initialLoad, setInitialLoad] = useState(true);
 
 
  
- const [state, dispatch] = useReducer(reducer, []);
 
 function reducer(states, action){
     
     switch (action.type){
       case ACTION.LoadAllData: 
           { 
+            setInitData(()=>{
+              return action.payload.map(data => {
+                  if(data.category.includes('clothing') && !data.title.includes('Laptops')){
+                    return {...data, size:'S', cart: 0}
+                  }else{
+                    return {...data, cart: 0}
+                  }
+              })
+            })
+
+            
+
             return action.payload;
           }
       case ACTION.Search_Filter_Sort:
@@ -71,9 +86,51 @@ function reducer(states, action){
            return mainData.filter(data => data.id === parseInt(action.payload.id))
           }
 
+          case ACTION.Cart_Update : 
+          {
+
+            
+            
+            
+          }
+
       default: return states;
 
     }
+}
+
+
+function handleCart(id, count, size){
+
+    
+    const updatedSize = state.some(value => value.id === id 
+      && value.category.includes('clothing')
+      && !value.title.includes('Laptops')) ? size : null
+
+      if(cart.length === 0 || !cart.some(val => val.id === id)){
+        setCart((preVal)=>{
+          return [...preVal, {...state.find(items => items.id === id), size: updatedSize, cart: count}]
+        })
+      }else if(cart.some(val => val.id === id) && cart.some(val => val.size === updatedSize)){
+        
+        setCart(data => {
+          return data.map(items => {
+            
+            if(items.id === id && items.size === updatedSize){
+              return {...items, size: updatedSize, cart: count}
+            }else{
+              return items
+            }
+          })
+          
+        })
+      }else{
+        setCart((preVal)=>{
+          return [...preVal, {...state.find(items => items.id === id), size: updatedSize, cart: count}]
+        })
+      }
+
+      
 }
 
 
@@ -90,7 +147,7 @@ async function fetchData () {
   Promise.all([Product, Category]).then(result => {
       const [data, category] = result;
       
-      setInitData(JSON.parse(JSON.stringify(data)))
+      // setInitData(JSON.parse(JSON.stringify(data)))
       
       if(initialLoad){
          dispatch({type: ACTION.LoadAllData, payload: data})
@@ -99,8 +156,10 @@ async function fetchData () {
       }
        
       setCategory(JSON.parse(JSON.stringify(category)))
+      
   })
 }
+
 
 
 //!Here fetch and Store data initial
@@ -110,9 +169,8 @@ useEffect(()=>{
 
 
 
-
   return (
-    <DataTransfer.Provider value={{dispatch, state, category, initData, initialLoad}}>
+    <DataTransfer.Provider value={{dispatch, state, category, initData, initialLoad, handleCart, cart}}>
       {children}
     </DataTransfer.Provider>
   )

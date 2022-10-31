@@ -8,6 +8,7 @@ import { GobalContextData } from '../../DataContext';
 const CardsContainer = ({state, sort, setSort, search}) => {
   const id = useParams();
   const {initialLoad} = GobalContextData()
+ 
   return (
     <div className={styles.cardsContainer}>
       {id.hasOwnProperty('id') ? null : <CardsSortingMenu sort={sort} setSort={setSort} search={search} cardLength={state.length}/>}  

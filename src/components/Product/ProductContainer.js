@@ -13,7 +13,7 @@ const ProductContainer = ({ product, intialData, dispatch }) => {
     <div className={styles.ProductContainer}>
       {
         product.map(product => {
-          const { id, image, title, category, price, description, rating } = product;
+          const { id, image, title, category, price, description, rating, size } = product;
 
           return <div className={styles.ProductDetails} key={id}>
 
@@ -37,7 +37,7 @@ const ProductContainer = ({ product, intialData, dispatch }) => {
 
                 </div>
               </div>
-              {category.includes('clothing') ? <div className={`${styles.size__dropdown__bold} size__dropdown`}>
+              {((size || category.includes('clothing')) && !title.includes('Fjallraven')) ? <div className={`${styles.size__dropdown__bold} size__dropdown`}>
                 <label htmlFor="size">Size</label>
                 <select id="size">
                   <option value="S">S</option>

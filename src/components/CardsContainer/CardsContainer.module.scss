@@ -167,9 +167,14 @@
 
         .title{
             color: var.$dark-color;
+            overflow: hidden;
+            
+            h3{
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            }
+            
             &:hover{
                 color: darken(var.$primary-color, 10)
             }
@@ -182,7 +187,8 @@
             line-height: 0;
             gap: 0.25em;
             font-weight: bold;
-
+            
+            
             .star {
                 color: var.$yellow-color;
             }
@@ -234,6 +240,10 @@
             background-color: var.$primary-color;
             color: var.$light-color;
             border-radius: var.$bd-radius;
+
+            span{
+                pointer-events: none;
+            }
         }
 
         @include utils.cart_counter('.cards__addToCart__counter')
