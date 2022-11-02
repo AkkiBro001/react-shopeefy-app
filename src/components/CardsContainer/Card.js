@@ -11,7 +11,7 @@ import {useState, useEffect } from 'react';
 const Card = (data) => {
     
     const [showAddtoCartBtn, setShowAddtoCartBtn] = useState(true)
-    const [noOfitems, setNoOfitems] = useState(0)
+    const [noOfitems, setNoOfitems] = useState("0")
     const [sizes, setSizes] = useState("S")
     const {dispatch, handleCart} = GobalContextData();
 
@@ -20,9 +20,23 @@ const Card = (data) => {
         if(name === "addToCart"){
 
             setShowAddtoCartBtn(false)
-            setNoOfitems(preVal => preVal+1)
+            setNoOfitems(preVal => {
+                if(preVal === "0"){
+                    return 1
+                }else{
+
+                    return preVal+1
+                }
+            })
         }else if(name === "increment"){
-            setNoOfitems(preVal => preVal+1)
+            setNoOfitems(preVal => {
+                if(preVal === "0"){
+                    return 1
+                }else{
+
+                    return preVal+1
+                }
+            })
         }else if(name === "decrement"){
             setNoOfitems(preVal => {
                 if(preVal <= 1){
@@ -39,12 +53,11 @@ const Card = (data) => {
     }
 
     useEffect(()=>{
-        
 
+        if(noOfitems !== "0"){
             handleCart(id, noOfitems, sizes)
-        
-        
-        
+        }
+
     }, [noOfitems])
     
     
@@ -80,7 +93,7 @@ const Card = (data) => {
                     <span className={styles.price}>${price}</span>
                     {((size || category.includes('clothing')) && !title.includes('Fjallraven')) ? <div className="size__dropdown">
                         <label htmlFor="size"> Size </label>
-                        <select id="size" onChange={(e)=>{setSizes(e.target.value); setNoOfitems(0)}} value={sizes}>
+                        <select id="size" onChange={(e)=>{setSizes(e.target.value); setNoOfitems("0")}} value={sizes}>
                             <option value="S">S</option>
                             <option value="L">L</option>
                             <option value="M">M</option>
