@@ -3,7 +3,7 @@ import { BsSearch } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { MdShoppingCart } from 'react-icons/md'
-import styles from './Navbar.module.scss';
+import styles from './navbar.module.scss';
 import profile from '../../images/profile.jpg'
 
 
