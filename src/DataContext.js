@@ -1,7 +1,5 @@
 import React, { createContext, useEffect, useReducer, useContext, useState } from 'react';
-import { AiOutlineCodepen } from 'react-icons/ai';
-import { MdImageNotSupported } from 'react-icons/md';
-import { useLocation } from 'react-router-dom';
+
 
 export const ACTION = {
   LoadAllData: 'loadalldata',
@@ -17,10 +15,9 @@ const DataContext = ({ children }) => {
   //!Store initial Data from server
   const [initData, setInitData] = useState([])
   const [category, setCategory] = useState([])
-  const [state, dispatch] = useReducer(reducer, []);
   const [cart, setCart] = useState([])
+  const [state, dispatch] = useReducer(reducer, []);
   const [initialLoad, setInitialLoad] = useState(true);
-
 
 
 
@@ -88,8 +85,19 @@ const DataContext = ({ children }) => {
 
       case ACTION.Cart_Update:
         {
+          
+          return states.map(state => {
 
-
+              const lastItem = cart.findLastIndex(value => value.id === state.id)
+              if(action?.payload?.delID && state.id === action?.payload?.delID){
+                return {...state, cart: 0}
+              }else if(lastItem > -1){
+                
+                return {...cart[lastItem]}
+              }else{
+                return state
+              }
+          })
 
 
         }
@@ -106,7 +114,7 @@ const DataContext = ({ children }) => {
     const updatedSize = state.some(value => value.id === id
       && value.category.includes('clothing')
       && !value.title.includes('Laptops')) ? size : null
-      
+      let deleteItems = false;
       setCart((preVal)=>{
           if(preVal.every(value => value.id !== id)){
             return [...preVal, {...state.find(item => item.id === id), cart: count, size: updatedSize}]
@@ -125,20 +133,23 @@ const DataContext = ({ children }) => {
           
           else{
             const delIndex = preVal.findIndex(item => item.id === id && item.size === updatedSize)
+            dispatch({type: ACTION.Cart_Update, payload: {delID: id}})
+            deleteItems = true;
             return preVal.filter((_, index) => index !== delIndex)
           }
 
         })
 
         
-        
-        
-          
+        if(!deleteItems){
+
+          dispatch({type: ACTION.Cart_Update})
+        }
+       
         
 
 
   }
-
 
   
   async function fetchData() {
@@ -173,7 +184,6 @@ const DataContext = ({ children }) => {
   useEffect(() => {
     fetchData();
   }, [])
-
 
 
   return (

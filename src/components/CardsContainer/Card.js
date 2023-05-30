@@ -9,10 +9,9 @@ import {useState, useEffect } from 'react';
 
 
 const Card = (data) => {
-    
-    const [showAddtoCartBtn, setShowAddtoCartBtn] = useState(true)
-    const [noOfitems, setNoOfitems] = useState("0")
-    const [sizes, setSizes] = useState("S")
+    const [showAddtoCartBtn, setShowAddtoCartBtn] = useState(() => data.cart !== undefined && data.cart !== 0 ? false : true)
+    const [noOfitems, setNoOfitems] = useState(data.cart !== undefined && data.cart !== 0 ? data.cart : "0")
+    const [sizes, setSizes] = useState(data.size !== undefined ? data.size : "S")
     const {dispatch, handleCart} = GobalContextData();
 
     function handleAddToCart(e, id){
@@ -57,12 +56,15 @@ const Card = (data) => {
         if(noOfitems !== "0"){
             handleCart(id, noOfitems, sizes)
         }
+       
 
     }, [noOfitems])
     
     
     
     const { id, title, price, description, category, image, rating, size } = data;
+
+    
     
     return (
         <div className={`${styles.card}`}>
