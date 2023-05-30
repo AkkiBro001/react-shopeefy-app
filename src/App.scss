@@ -1,9 +1,16 @@
 @use './variables' as var;
 @use './utilityClasses' as utils;
+@use './mediaQuery' as media;
 
+:root{
+    --searchContainerHeight: 0px;
+}
 
 body{
     font-family: var.$global-font;
+    color: var.$dark-color;
+    background: var.$light-grey-color;
+   
 }
 
 *{
@@ -21,3 +28,112 @@ ul{
     color: var.$light-color;
     display: inline-block;
 }
+
+.size__dropdown{
+    display: flex;
+    align-items: center;
+    color: darken(var.$grey-color, 30);
+    gap: 0.5em;
+
+    select{
+        padding: 0.25em 0.5em;
+    }
+}
+
+.mainHeader{
+  position: fixed;
+   width: 100%;
+   top:0;
+   left: 0;
+   z-index: 1000;
+//    height: var(--MainHeaderheight);
+   background: green;
+}
+
+.mainBody{
+    margin-top: calc(var.$NavHeight +  var(--searchContainerHeight));
+    background: var.$light-grey-color;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5em 2em;
+    gap: var.$filterAndCardsContainerGap;
+    align-items: flex-start;
+
+    @include media.desktop1000{
+        flex-direction: column;
+    }
+
+    @include media.mobile500{
+        
+        padding: 1.5em 1em;
+    }
+   
+}
+
+.productMain{
+    margin-top: var.$NavHeight;
+    padding: 1.5em 2em;
+
+    @include media.mobile600{
+        padding:0;
+    }
+}
+
+.cartMain{
+    margin-top: var.$NavHeight;
+    background: var.$light-grey-color;
+    padding: 1.5em 2em;
+    display: flex;
+    gap: 1em;
+    
+    @include media.desktop1000{
+        flex-wrap: wrap;
+    }
+
+    @include media.mobile600{
+        flex-wrap: wrap;
+        padding: 0;
+        // padding: 0.75em;
+    }
+}
+
+.notFound{
+    display: flex;
+    height: calc(100vh - var.$NavHeight);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+
+    h2{
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        
+        svg{
+            color: var.$yellow-color;
+            line-height: 0;
+            font-size: 6rem;
+            
+        }
+    }
+
+    a{
+        font-size: 1.3rem;
+        color: darken(var.$grey-color, 30);
+    }
+}
+
+.mainBody.hideSearchOption{
+    margin-top: var.$NavHeight;
+
+    @include media.desktop1000{
+        margin-top: 140px
+    }
+}
+
+
+
+
