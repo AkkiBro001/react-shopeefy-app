@@ -2,8 +2,9 @@ import styles from './Product.module.scss';
 import {AiFillStar, AiFillHeart} from 'react-icons/ai';
 import {MdShoppingCart} from 'react-icons/md';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CardsContainer from '../CardsContainer/CardsContainer';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 
 const ProductContainer = () => {
   const {id} = useParams()
@@ -60,8 +61,12 @@ const ProductContainer = () => {
                     <button>+</button>
                 </div> */}
             </div>
-        </div>
+            <div className={styles.links}>
 
+              <Link to="/react-shopeefy-app"><BsArrowLeft/> <span>go to home</span></Link>
+              <Link to="/react-shopeefy-app/cart"><span>go to cart</span> <BsArrowRight/></Link>
+            </div>
+        </div>
       </div>
 
       <div className={styles.ProductRelated}>
