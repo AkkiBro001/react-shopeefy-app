@@ -1,31 +1,37 @@
 import styles from './Product.module.scss';
 import {AiFillStar, AiFillHeart} from 'react-icons/ai';
 import {MdShoppingCart} from 'react-icons/md';
-
-// import CardsContainer from '../CardsContainer/CardsContainer';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import CardsContainer from '../CardsContainer/CardsContainer';
 
 const ProductContainer = () => {
+  const {id} = useParams()
+  
+  const products = useSelector(state => state.product)
+  const {description, image, price, rating, title, category} = products.data.find(product => product.id === parseInt(id))
+  const relatedProduct = products.data.filter(product => product.category.includes(category) && product.id !== parseInt(id))
   return (
     <div className={styles.ProductContainer}>
       <div className={styles.ProductDetails}>
 
         <div className={styles.ProductDetails__image}>
-          <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" />
+          <img src={image} alt="productImg" />
         </div>
 
         <div className={styles.ProductDetails__details}>
-      <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" className={styles.bgImage}/>
+      <img src={image} alt="productImg" className={styles.bgImage}/>
 
-          <h3 className={styles.ProductDetails__details__name}>Mans Clothing</h3>
-          <p className={styles.ProductDetails__details__desc}>Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday</p>
+          <h3 className={styles.ProductDetails__details__name}>{title}</h3>
+          <p className={styles.ProductDetails__details__desc}>{description}</p>
           <div className={styles.rating_like}>
                   <div className={styles.rating}>
                     <span className={styles.star}><AiFillStar/></span>
-                    <span className={styles.text}>4.8</span>
+                    <span className={styles.text}>{rating.rate}</span>
                   </div>
                   <div className={styles.like}>
                     <span className={styles.heart}><AiFillHeart/></span>
-                    <span className={styles.text}>150</span>
+                    <span className={styles.text}>{rating.count}</span>
                     
                   </div>
               </div>
@@ -40,7 +46,7 @@ const ProductContainer = () => {
                         
                     </select>
                 </div>
-                <div className={styles.price}><span className={styles.price_lable}>Price: </span><span className={styles.price_lable_text}>$590</span></div>
+                <div className={styles.price}><span className={styles.price_lable}>Price: </span>{price}<span className={styles.price_lable_text}>$590</span></div>
                 <div className={styles.cards__addToCard}>
                 <button className={styles.cards__addToCart}>
                     <span className={styles.cart}>
@@ -61,7 +67,7 @@ const ProductContainer = () => {
       <div className={styles.ProductRelated}>
         <h3 className={styles.ProductRelated__header}>Products related to this item</h3>
         <div className={styles.ProductRelated__card}>
-          {/* <CardsContainer/> */}
+        <CardsContainer products={relatedProduct}/>
           
         </div>
       </div>

@@ -45,8 +45,8 @@ const FilterContainer = ({products}) => {
             </li>
 
             {/* //*Filter List */}
-            <FilterSection  header="Category" body={categories}/> 
-            <FilterSection  header="Rating" body={rating}/> 
+            <FilterSection  header="Category" body={categories} inputType="checkbox"/> 
+            <FilterSection  header="Rating" body={rating} inputType="radio"/> 
             
             
         </ul>

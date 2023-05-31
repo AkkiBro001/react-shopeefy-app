@@ -19,7 +19,8 @@
 
 .cards__searchResult {
     font-size: 1.2rem;
-    @include media.mobile500{
+
+    @include media.mobile500 {
         font-size: 1.1rem;
     }
 
@@ -34,7 +35,7 @@
 
     align-self: flex-end;
 
-    @include media.mobile500{
+    @include media.mobile500 {
         font-size: 1rem;
     }
 
@@ -60,40 +61,40 @@
     flex-wrap: wrap;
     margin-top: 1em;
     justify-content: center;
-    
+
 }
 
 .card {
     width: var.$cardWidth;
     overflow: hidden;
     border-radius: var.$bd-radius;
-    box-shadow: 0 0 5px rgba(0,0,0,0.10);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.10);
     position: relative;
     outline: none;
-    
-    @include media.tablet768{
+
+    @include media.tablet768 {
         width: var.$cardWidthTablet;
 
     }
 
-    @include media.mobile500{
+    @include media.mobile500 {
         width: var.$cardWidthMobile;
         font-size: 0.95rem;
     }
-    
+
 
     .card__img {
         overflow: hidden;
         width: 100%;
         height: calc(var.$cardWidth * var.$cardHeightRatio);
 
-        .productImage{
-            display: block;
+        .productImage {
+
             width: 100%;
             height: 100%;
             position: relative;
 
-            .like{
+            .like {
                 position: absolute;
                 bottom: 0.5em;
                 right: 0.5em;
@@ -103,13 +104,35 @@
                 background-color: transparentize(var.$light-color, 0.1);
                 padding: 0.25em 0.5em;
                 border-radius: var.$bd-radius;
-                svg{
+
+                svg {
                     color: crimson;
                 }
-    
+
+            }
+
+            .rating {
+                position: absolute;
+                bottom: 0.5em;
+                left: 0.5em;
+                display: flex;
+                align-items: center;
+                line-height: 0;
+                gap: 0.25em;
+                font-weight: bold;
+                color: var.$dark-color;
+                background-color: transparentize(var.$light-color, 0.1);
+                padding: 0.25em 0.5em;
+                border-radius: var.$bd-radius;
+
+                .star {
+                    color: var.$yellow-color;
+                }
+
+
             }
         }
-    
+
         img {
             width: 100%;
             height: 100%;
@@ -117,20 +140,20 @@
             object-position: top center;
         }
 
-        @include media.tablet768{
+        @include media.tablet768 {
             height: calc(var.$cardWidthTablet * var.$cardHeightRatioTablet);
         }
 
-        @include media.mobile500{
+        @include media.mobile500 {
             height: calc(var.$cardWidthMobile * var.$cardHeightRatioMobile);
         }
 
-       
 
-        
+
+
     }
 
-   
+
 
     .cards__details {
         padding: 0.75em;
@@ -139,89 +162,83 @@
         flex-direction: column;
         gap: 0.75em;
 
-        
-    
-    
 
-    .cards__product {
-        display: flex;
-        justify-content: space-between;
-        color: var.$dark-color;
-        gap: 0.25em;
 
-        .title{
+
+
+        .cards__product {
+            display: flex;
+            justify-content: space-between;
             color: var.$dark-color;
+            gap: 0.25em;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            &:hover{
-                color: darken(var.$primary-color, 10)
-            }
-            
-        }
 
-        .rating {
-            display: flex;
-            align-items: center;
-            line-height: 0;
-            gap: 0.25em;
-            font-weight: bold;
+            .title {
+                color: var.$dark-color;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
-            .star {
-                color: var.$yellow-color;
+                &:hover {
+                    color: darken(var.$primary-color, 10)
+                }
+
+
             }
 
-            
-        }
-    }
 
-
-    .cards__product__desc{
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: darken(var.$grey-color, 20) ;
-    }
-
-    .cards__product__price{
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        
-
-        .price{
-            font-size: 1.5rem;
-            color: var.$primary-color;
         }
 
 
-        
-    }
-
-
-    .cards__addToCard{
-
-        button{
-            @include utils.resetButton;
+        .cards__product__desc {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: darken(var.$grey-color, 20);
+            cursor: default;
         }
 
-        .cards__addToCart{
-            display: flex;
-            padding: 0.5em 0.75em;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            line-height: 0;
-            gap: 0.5em;
+        .cards__product__price {
             font-weight: 600;
-            font-size: 1.1rem;
-            background-color: var.$primary-color;
-            color: var.$light-color;
-            border-radius: var.$bd-radius;
+            display: flex;
+            justify-content: space-between;
+
+
+            .price {
+                font-size: 1.5rem;
+                color: var.$primary-color;
+            }
+
+
+
         }
 
-        @include utils.cart_counter('.cards__addToCart__counter')
-    }
+
+        .cards__addToCard {
+
+            button {
+                @include utils.resetButton;
+            }
+
+            .cards__addToCart {
+                display: flex;
+                padding: 0.5em 0.75em;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                line-height: 0;
+                gap: 0.5em;
+                font-weight: 600;
+                font-size: 1.1rem;
+                background-color: var.$primary-color;
+                color: var.$light-color;
+                border-radius: var.$bd-radius;
+            }
+
+            @include utils.cart_counter('.cards__addToCart__counter')
+        }
 
     }
 

@@ -154,6 +154,10 @@
         align-items: center;
         gap: 0.5em;
         padding: 0.5em 0;
+        
+        label{
+          cursor: pointer;
+        }
     }
 
     .checkList:first-child{
@@ -162,6 +166,15 @@
 
     .star{
         color: var.$yellow-color;
+        padding: 0.25em;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        line-height: 0;
+    }
+
+    .ratingCheck:checked ~ .star{
+      border: 1px solid darken(var.$grey-color, 20);
+      border-radius: 10px;
     }
 
 }

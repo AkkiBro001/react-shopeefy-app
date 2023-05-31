@@ -3,13 +3,13 @@ import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from 'react-icon
 import { useState } from 'react';
 import { titleCase, setStars } from '../../utils/utils';
 
-const FilterSection = ({header,body}) => {
-    
+const FilterSection = ({ header, body, inputType }) => {
+
     const [hideFilter, setHideFilter] = useState(false)
 
-    
 
-    
+
+
 
     return (
         <>
@@ -19,36 +19,46 @@ const FilterSection = ({header,body}) => {
                 <div className={styles.filterHeader} style={{ marginBottom: '1em' }}>
                     <span>{header}</span>
                     <button
-                    onClick={()=>setHideFilter(preVal => !preVal)}
-                    >{hideFilter ? 'Show' : 'Hide'} 
-                    <span>
-                    {hideFilter ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowUp />}
-                    </span>
+                        onClick={() => setHideFilter(preVal => !preVal)}
+                    >{hideFilter ? 'Show' : 'Hide'}
+                        <span>
+                            {hideFilter ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowUp />}
+                        </span>
                     </button>
                 </div>
 
-               
+
 
                 {
                     !hideFilter ?
-                    
-                        
-                             
-                    body.map((category, index) => <div key={index} className={`${styles.filterBody} checkBoxList`}>
-                            <div className={styles.checkList}>
-                                <input type="checkbox"  name={category} id={category} value={category} />
-                                <label htmlFor={category} className={header === "Rating" ? styles.star : ""}>
-                                    {header === "Category" ? titleCase(category) : setStars(category)}
-                                </label>
-                            </div>
+
+
+
+                        body.map((category, index) => <div key={index} className={`${styles.filterBody} checkBoxList`}>
+                            {
+                                header === "Category" ?
+                                <div className={styles.checkList}>
+                                    <input type={inputType} name={header} id={category} value={category} />
+                                    <label htmlFor={category}>
+                                        {titleCase(category)}
+                                    </label>
+                                </div>
+                                :
+                                <div className={styles.checkList}>
+                                    <input type={inputType} name={header} id={category} value={category} style={{display: "none"}} className={styles.ratingCheck}/>
+                                    <label htmlFor={category} className={styles.star}>
+                                        {setStars(category)}
+                                    </label>
+                                </div>
+                            }
 
                         </div>)
-                                    
-                            
-                    : null
+
+
+                        : null
 
                 }
-                        
+
             </li>
 
 
