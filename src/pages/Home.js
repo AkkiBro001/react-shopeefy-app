@@ -1,83 +1,48 @@
-import { useEffect, useState } from "react";
-import SearchContainer from "../components/SearchContainer/SearchContainer";
+import {useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import FilterContainer from "../components/Filter/FilterContainer";
 import CardsContainer from "../components/CardsContainer/CardsContainer";
-import { GobalContextData } from "../DataContext";
-import { ACTION } from "../DataContext";
+import { fetchProductThunk } from "../redux_store/ProductSilce";
+import { useDispatch, useSelector } from "react-redux";
+import { STATUS } from "../redux_store/ProductSilce";
+
 
 const Home = () => {
 
+  const dispatch = useDispatch()
   
-
-  const { state, dispatch, category } = GobalContextData()
+  const {data: products, status} = useSelector(state => state.product)
 
   const [search, setSearch] = useState("")
-  const [relatedSearch, setRelatedSearch] = useState([])
-  const [filter, setFilter] = useState({
-    reset: false,
-    price: 1000,
-    category: [],
-    rate: []
-  })
+  
   
   const [sort, setSort] = useState("category")
 
-  function handleRealatedSearch(e){
-    
-  }
-  
-  function handleFilter(e) {
-    
-    const { name, value } = e.target;
-    setFilter((preVal) => {
-      if (name === 'reset') {
-        return {
-          reset: false,
-          price: 1000,
-          category: [],
-          rate: []
-        }
-      } else if (name === 'price') {
-        return { ...preVal, price: value }
-      } else if (name === 'category') {
-        const isChecked = preVal.category.includes(value)
-        return {
-          ...preVal,
-          category: isChecked ? preVal.category.filter(v => v !== value) : [...preVal.category, value]
-        }
-
-      } else if (name === 'rate') {
-        const isChecked = preVal.rate.includes(value)
-
-        return {
-          ...preVal,
-          rate: isChecked ? preVal.rate.filter(v => v !== value) : [...preVal.rate, value]
-        }
-
-      }
-
-    })
-
-  }
-
   useEffect(()=>{
-    
-    dispatch({type: ACTION.Search_Filter_Sort, payload: {search, filter, sort}})
-    
-  }, [search, filter, sort])
+    if(products.length > 0) return 
+    dispatch(fetchProductThunk())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+ 
+  if(status === STATUS.LOADING){
+    return <h2>Loading....</h2>
+  }
 
+  if(status === STATUS.ERROR){
+    return <h2>Something Went Wrong</h2>
+  }
   
-
+  
+  
   return (
     <>
       <div className="mainHeader">
         <Navbar setSearch={setSearch} search={search} />
-        <SearchContainer search={search} state={state} handleRealatedSearch={handleRealatedSearch}/>
+        
       </div>
       <div className={`mainBody ${search ? '' : 'hideSearchOption'}`}>
-        <FilterContainer category={category} filter={filter} handleFilter={handleFilter} />
-        <CardsContainer state={state} sort={sort} setSort={setSort} search={search}/>
+        <FilterContainer  products={products}/>
+        <CardsContainer sort={sort} setSort={setSort} search={search} products={products}/>
       </div>
     </>
   )

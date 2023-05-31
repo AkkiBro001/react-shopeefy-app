@@ -2,7 +2,7 @@ import styles from './Product.module.scss';
 import {AiFillStar, AiFillHeart} from 'react-icons/ai';
 import {MdShoppingCart} from 'react-icons/md';
 
-import CardsContainer from '../CardsContainer/CardsContainer';
+// import CardsContainer from '../CardsContainer/CardsContainer';
 
 const ProductContainer = () => {
   return (

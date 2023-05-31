@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './CardsContainer.module.scss'
 
-const CardsSortingMenu = ({sort, setSort, search, cardLength}) => {
+const CardsSortingMenu = ({sort, setSort, search}) => {
   return (
     <div className={styles.cardsSortingMenu}>
         <div className={styles.cards__searchResult}>
            
-            {search ? <article>Found <span>{cardLength}</span> {cardLength <= 1 ? 'item' : 'items' } on search</article> : null}
+            {search ? <article>Found <span>{20}</span> {"20"} on search</article> : null}
             
         </div>
         <div className={styles.cards_sorting}>

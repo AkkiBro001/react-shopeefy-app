@@ -2,17 +2,17 @@ import React from 'react';
 import styles from './CardsContainer.module.scss'
 import CardsSortingMenu from './CardsSortingMenu';
 import Card from './Card';
-import { useParams } from 'react-router-dom';
 
-const CardsContainer = ({state, sort, setSort, search}) => {
-  const id = useParams();
+
+const CardsContainer = ({sort, setSort, search, products}) => {
+
 
   
   return (
     <div className={styles.cardsContainer}>
-      {id.hasOwnProperty('id') ? null : <CardsSortingMenu sort={sort} setSort={setSort} search={search} cardLength={state.length}/>}  
+      <CardsSortingMenu sort={sort} setSort={setSort} search={search}/>
       <div className={styles.cardsContainer__cards}>
-        {state.map(data => <Card key={data.id} {...data}/>) }
+        {products.map(product => <Card key={product.id} {...product}/>)}
       </div>
     </div>
 

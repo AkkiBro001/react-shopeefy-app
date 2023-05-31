@@ -1,18 +1,13 @@
 import styles from './Filter.module.scss';
 import { MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp } from 'react-icons/md'
-import {AiFillStar} from 'react-icons/ai'
 import { useState } from 'react';
+import { titleCase, setStars } from '../../utils/utils';
 
-
-const FilterSection = ({ header, body, filter, handleFilter}) => {
+const FilterSection = ({header,body}) => {
     
     const [hideFilter, setHideFilter] = useState(false)
 
-    function titleCase(str) {
-        return str.toLowerCase().split(' ').map(function(word) {
-          return (word.charAt(0).toUpperCase() + word.slice(1));
-        }).join(' ');
-      }
+    
 
     
 
@@ -35,45 +30,22 @@ const FilterSection = ({ header, body, filter, handleFilter}) => {
                
 
                 {
-                    !hideFilter &&
-                    header === "Category" ?
-                        body.map(data => {
-                            return (
-                                <div className={`${styles.filterBody} checkBoxList`} key={data}>
-                                    <div className={styles.checkList}>
-                                        <input type="checkbox" id={data} name="category" value={data} 
-                                        onChange={handleFilter} 
-                                        checked = {filter.category.includes(data)}
-                                        />
-                                        <label htmlFor={data}>{titleCase(data)}</label>
-                                    </div>
+                    !hideFilter ?
+                    
+                        
+                             
+                    body.map((category, index) => <div key={index} className={`${styles.filterBody} checkBoxList`}>
+                            <div className={styles.checkList}>
+                                <input type="checkbox"  name={category} id={category} value={category} />
+                                <label htmlFor={category} className={header === "Rating" ? styles.star : ""}>
+                                    {header === "Category" ? titleCase(category) : setStars(category)}
+                                </label>
+                            </div>
 
-                                </div>
-                            )
-                        })
-                        :!hideFilter && header === "Rating" ? Array.from({length: body}, (_, i) => body - i).map(
-                           data => {
+                        </div>)
+                                    
                             
-                            return (
-                                <div className={`${styles.filterBody} checkBoxList`} key={data}>
-                                    <div className={styles.checkList}>
-                                        <input type="checkbox" id={data} name="rate" value={data} 
-                                            onChange={handleFilter} 
-                                            checked = {filter.rate.includes(data.toString())}
-                                        />
-                                        <label className={styles.star} htmlFor={data}>{
-                                            Array.from({length: data}, (_, i) => data - i).map(
-                                                num => <AiFillStar key={num}/>
-                                            )
-                                            }</label>
-                                    </div>
-
-                                </div>
-                            )
-                            }
-                        )
-                            
-                        : null
+                    : null
 
                 }
                         

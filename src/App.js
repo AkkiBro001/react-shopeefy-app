@@ -4,12 +4,14 @@ import Cart from './pages/Cart';
 import Home from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
 import Product from './pages/Product';
-
+import Store from './redux_store/Store';
+import { Provider } from 'react-redux';
 
 function App() {
   
   return (
     <>
+      <Provider store={Store}>
       <Routes>
         <Route path="/react-shopeefy-app">
           <Route index element={<Home />} />
@@ -18,6 +20,7 @@ function App() {
         </Route>
         <Route path="*" element={<PageNotFound hideSearch={true}/>} />
       </Routes>
+      </Provider>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
@@ -9,17 +9,9 @@ import profile from '../../images/profile.jpg'
 
 const Navbar = ({search, setSearch, hideSearch}) => {
    
-   const [scroll, setScroll] = useState(window.scrollY)
    
-   function handleScroll(){
-        setScroll(window.scrollY)
-   }
 
-   useEffect(()=>{
-   if(hideSearch) return
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-   }, [scroll])
+   
    
    
    
@@ -27,7 +19,7 @@ const Navbar = ({search, setSearch, hideSearch}) => {
         <div className={styles.navBar}>
             <ul className={styles.navBar__menu}>
                 <li className={styles.navBar__logo}><h2><Link to="/react-shopeefy-app" className='link'>Shopeefy</Link></h2></li>
-               {hideSearch ? null : <li className={`${styles.searchBar} ${!search && scroll > 100 ? styles.hideOnScroll : ""}`}>
+               {hideSearch ? null : <li className={`${styles.searchBar}`}>
                     
                         <BsSearch className={styles.searchIcon} />
                         <form>

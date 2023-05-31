@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar/Navbar";
-import SearchContainer from "../components/SearchContainer/SearchContainer";
 import CartContainer from "../components/CartContainer/CartContainer";
 import CartAside from "../components/CartContainer/CartAside";
 

@@ -4,19 +4,19 @@ import { MdShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 
-const Card = (data) => {
-    const { id, title, price, description, category, image, rating } = data;
+const Card = ({id, title, description, image, rating, price }) => {
+    
     return (
         <div className={`${styles.card}`}>
             <div className={styles.card__img}>
-                <Link to={`/react-shopeefy-app/product/${id}`} className={`${styles.productImage} link`}>
+                <Link to={`/react-shopeefy-app/product/${"id"}`} className={`${styles.productImage} link`}>
                     <span className={styles.like}><AiFillHeart/>{rating.count}</span>
                     <img src={image} alt="productImage" />
                 </Link>
             </div>
             <div className={styles.cards__details}>
                 <div className={styles.cards__product}>
-                    <Link to={`/react-shopeefy-app/product/${id}`} className={`link ${styles.title}`} title={title}><h3>{title}</h3></Link>
+                    <Link to={`/react-shopeefy-app/product/${"id"}`} className={`link ${styles.title}`} title={title}><h3>{title}</h3></Link>
                     <div className={styles.rating}>
                         <span className={styles.star}>
                             <AiFillStar />
@@ -24,12 +24,12 @@ const Card = (data) => {
                         <span>{rating.rate}</span>
                     </div>
                 </div>
-                <div className={styles.cards__product__desc}>
+                {/* <div className={styles.cards__product__desc}>
                     {description}
-                </div>
+                </div> */}
                 <div className={styles.cards__product__price}>
                     <span className={styles.price}>${price}</span>
-                    {(category.includes('cloth') && !title.includes('Fjallraven')) ? <div className="size__dropdown">
+                    <div className="size__dropdown">
                         <label htmlFor="size">Size</label>
                         <select id="size">
                             <option value="S">S</option>
@@ -38,8 +38,8 @@ const Card = (data) => {
                             <option value="XL">XL</option>
                             <option value="XXL">XXL</option>
                         </select>
-                    </div> : null}
-                    {/*  */}
+                    </div>
+                    
                 </div>
 
                 <div className={styles.cards__addToCard}>
