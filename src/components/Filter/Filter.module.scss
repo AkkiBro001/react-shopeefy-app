@@ -138,7 +138,7 @@
     //*================================================//*
     input[type="range"]{
         width: 100%;
-      
+        accent-color: var.$primary-color;
     }
 
     .priceLable{
@@ -157,6 +157,12 @@
         
         label{
           cursor: pointer;
+          user-select: none;
+        }
+
+        input[type="checkbox"]{
+          accent-color: darken(var.$primary-color, 20);
+         
         }
     }
 
@@ -170,10 +176,12 @@
         border: 1px solid transparent;
         border-radius: 10px;
         line-height: 0;
+        display: flex;
+        align-items: center;
     }
 
     .ratingCheck:checked ~ .star{
-      border: 1px solid darken(var.$grey-color, 20);
+      border: 1px solid var.$yellow-color;
       border-radius: 10px;
     }
 

@@ -10,7 +10,7 @@ body{
     font-family: var.$global-font;
     color: var.$dark-color;
     background: var.$light-grey-color;
-   
+    position: relative;
 }
 
 *{
@@ -58,6 +58,7 @@ ul{
     padding: 1.5em 2em;
     gap: var.$filterAndCardsContainerGap;
     align-items: flex-start;
+    position: relative;
 
     @include media.desktop1000{
         flex-direction: column;

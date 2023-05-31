@@ -47,7 +47,7 @@ const FilterSection = ({ header, body, inputType }) => {
                                 <div className={styles.checkList}>
                                     <input type={inputType} name={header} id={category} value={category} style={{display: "none"}} className={styles.ratingCheck}/>
                                     <label htmlFor={category} className={styles.star}>
-                                        {setStars(category)}
+                                        {setStars(category)} 
                                     </label>
                                 </div>
                             }

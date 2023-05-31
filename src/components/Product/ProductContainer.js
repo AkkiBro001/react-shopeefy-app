@@ -35,7 +35,7 @@ const ProductContainer = () => {
                     
                   </div>
               </div>
-              <div className={`${styles.size__dropdown__bold} size__dropdown`}>
+              {category.includes("clothing") && <div className={`${styles.size__dropdown__bold} size__dropdown`}>
                     <label htmlFor="size">Size</label>
                     <select id="size">
                         <option value="S">S</option>
@@ -45,8 +45,8 @@ const ProductContainer = () => {
                         <option value="XXL">XXL</option>
                         
                     </select>
-                </div>
-                <div className={styles.price}><span className={styles.price_lable}>Price: </span>{price}<span className={styles.price_lable_text}>$590</span></div>
+                </div>}
+                <div className={styles.price}><span className={styles.price_lable}>Price: </span><span className={styles.price_lable_text}>${price}</span></div>
                 <div className={styles.cards__addToCard}>
                 <button className={styles.cards__addToCart}>
                     <span className={styles.cart}>

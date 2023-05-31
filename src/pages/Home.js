@@ -5,6 +5,8 @@ import CardsContainer from "../components/CardsContainer/CardsContainer";
 import { fetchProductThunk } from "../redux_store/ProductSilce";
 import { useDispatch, useSelector } from "react-redux";
 import { STATUS } from "../redux_store/ProductSilce";
+import Loading from "../components/Loading/Loading";
+import PageNotFound from "./PageNotFound";
 
 
 const Home = () => {
@@ -24,15 +26,9 @@ const Home = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
  
-  if(status === STATUS.LOADING){
-    return <h2>Loading....</h2>
-  }
-
-  if(status === STATUS.ERROR){
-    return <h2>Something Went Wrong</h2>
-  }
   
   
+ 
   
   return (
     <>
@@ -40,10 +36,11 @@ const Home = () => {
         <Navbar setSearch={setSearch} search={search} />
         
       </div>
+      {status === STATUS.LOADING ? <Loading/> : status === STATUS.ERROR ? <PageNotFound error="Something went wrong !!!" msg="try after some time"/> :
       <div className={`mainBody ${search ? '' : 'hideSearchOption'}`}>
         <FilterContainer  products={products}/>
         <CardsContainer sort={sort} setSort={setSort} search={search} products={products}/>
-      </div>
+      </div>}
     </>
   )
 }

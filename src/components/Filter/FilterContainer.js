@@ -4,7 +4,7 @@ import FilterSection from './FilterSection';
 import {MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp} from 'react-icons/md'
 
 
-const rating = [5,4,3,2,1]
+const rating = [4,3,2]
 
 const FilterContainer = ({products}) => {
   const [hideFilter, setHideFilter] = useState(false)
