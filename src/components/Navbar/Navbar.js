@@ -5,14 +5,17 @@ import { Link } from 'react-router-dom';
 import { MdShoppingCart } from 'react-icons/md'
 import styles from './navbar.module.scss';
 import profile from '../../images/profile.jpg'
-
+import { useSelector } from 'react-redux';
 
 const Navbar = ({search, setSearch, hideSearch}) => {
    
-   
+   const cart = useSelector(state => state.cart)
 
    
-   
+   const NoOfCartItems = cart.reduce((total, product) => {
+        total += product.cartCount;
+        return total
+   }, 0)
    
    
    return (
@@ -41,7 +44,7 @@ const Navbar = ({search, setSearch, hideSearch}) => {
                 </li>
                 <li>
                     <Link to="/react-shopeefy-app/cart" className={`${styles.navBar__cart} link`}>
-                        <div className={styles.lable}>1</div>
+                        <div className={styles.lable}>{NoOfCartItems}</div>
                         <MdShoppingCart />
                     </Link>
                 </li>

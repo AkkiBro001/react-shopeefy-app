@@ -8,6 +8,7 @@
 
 @mixin cart_counter($clsName){
     #{$clsName}{
+        align-self: center;
         display: flex;
         justify-content: center;
         gap: 0.5em;
@@ -31,7 +32,7 @@
             }
         }
 
-        input{
+        span{
             width: 50px;
             padding: 0.25em;
             text-align: center;

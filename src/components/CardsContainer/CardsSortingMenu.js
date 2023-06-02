@@ -11,7 +11,7 @@ const CardsSortingMenu = ({sort, setSort, search}) => {
         </div>
         <div className={styles.cards_sorting}>
             <span>Sort By</span>
-            <select name="sort" id="sort" className={styles.sort} value={sort} onChange={(e)=>setSort(e.target.value)}>
+            <select name="sort" className={styles.sort} value={sort} onChange={(e)=>setSort(e.target.value)}>
                 <option value="category" className={styles.option}>Category</option>
                 <option value="priceLow" className={styles.option}>Price: Low to High</option>
                 <option value="priceHigh" className={styles.option}>Price: High to Low</option>

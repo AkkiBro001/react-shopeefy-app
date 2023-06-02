@@ -1,46 +1,61 @@
 import {AiFillDelete, AiFillStar, AiFillHeart} from 'react-icons/ai'
 import styles from './Cart.module.scss'
+import { Link } from 'react-router-dom'
+import { decrement, increment, removeCart } from '../../redux_store/CartSlice'
+import { useDispatch } from 'react-redux'
 
-const CartItems = () => {
+
+
+
+const CartItems = ({id, title, description, image, rating, price, category, cartCount, size }) => {
+
+  const dispatch = useDispatch()
+  
+function handleIncrementDecrement(event, id){
+  
+    const {name} = event.target;
+    if(name === "increment"){
+      dispatch(increment(id))
+    }if(name === "decrement"){
+      dispatch(decrement(id))
+    }
+}
+
+  const productURLID = `/react-shopeefy-app/product/${id}`
   return (
     <li className={styles.Cart__item}>
           <div className={styles.Cart__image}>
-            <img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt="" />
+            <img src={image} alt="productImg" />
           </div>
 
           <div className={styles.Cart__details}>
             <div className={styles.item_details}>
-              <h3 className={styles.title}>Mortein 2 In 1 Mosquito And Cockroach Killer Spray - 400Ml</h3>
+              <Link to={productURLID}>
+                <h3 className={styles.title}>{title}</h3>
+              </Link>
               
               <div className={styles.rating_like}>
                   <div className={styles.rating}>
                     <span className={styles.star}><AiFillStar/></span>
-                    <span className={styles.text}>4.8</span>
+                    <span className={styles.text}>{rating.rate}</span>
                   </div>
                   <div className={styles.like}>
                     <span className={styles.heart}><AiFillHeart/></span>
-                    <span className={styles.text}>150</span>
+                    <span className={styles.text}>{rating.count}</span>
                     
                   </div>
               </div>
-              <div className={`${styles.size__dropdown__bold} size__dropdown`}>
-                    <label htmlFor="size">Size</label>
-                    <select id="size">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                        
-                    </select>
-                </div>
+              
               <div className={styles.quantity}>
                 <div className={styles.itemConter}>
-                  <button>-</button>
-                  <input type="text" min="1"/>
-                  <button>+</button>
+                  <button name="decrement" onClick={(e)=>handleIncrementDecrement(e, id)}>-</button>
+                  
+                  <span>{cartCount}</span>
+                  <button name="increment" onClick={(e)=>handleIncrementDecrement(e, id)}>+</button>
                 </div>
-                <button className={styles.itemDelete}>
+                <button className={styles.itemDelete}
+                onClick={()=>dispatch(removeCart(id))}
+                >
                     <AiFillDelete/>
                     <span>Delete</span>
                 </button>
@@ -48,7 +63,7 @@ const CartItems = () => {
             </div>
 
             <div className={styles.item_price}>
-                <h3>$130</h3>
+                <h3>${price}</h3>
             </div>
           </div>
         </li>

@@ -1,17 +1,39 @@
 import styles from './Product.module.scss';
 import {AiFillStar, AiFillHeart} from 'react-icons/ai';
 import {MdShoppingCart} from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import CardsContainer from '../CardsContainer/CardsContainer';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { addCart, increment, decrement } from '../../redux_store/CartSlice';
 
 const ProductContainer = () => {
   const {id} = useParams()
-  
+  const carts = useSelector(state => state.cart)
   const products = useSelector(state => state.product)
   const {description, image, price, rating, title, category} = products.data.find(product => product.id === parseInt(id))
-  const relatedProduct = products.data.filter(product => product.category.includes(category) && product.id !== parseInt(id))
+  const relatedProduct = products.data.filter(product => product.category === category && product.id !== parseInt(id))
+  const product = products.data.find(product => product.id === parseInt(id))
+  const dispatch = useDispatch()
+
+  function handleAddToCart(product) {
+
+        
+    dispatch(addCart(product))
+    
+}
+
+function handleIncrementDecrement(event, id){
+    
+    const {name} = event.target;
+    if(name === "increment"){
+      dispatch(increment(id))
+    }if(name === "decrement"){
+      dispatch(decrement(id))
+    }
+}
+
+  const productCart = carts.find(product => product.id === parseInt(id))
   return (
     <div className={styles.ProductContainer}>
       <div className={styles.ProductDetails}>
@@ -36,30 +58,26 @@ const ProductContainer = () => {
                     
                   </div>
               </div>
-              {category.includes("clothing") && <div className={`${styles.size__dropdown__bold} size__dropdown`}>
-                    <label htmlFor="size">Size</label>
-                    <select id="size">
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                        
-                    </select>
-                </div>}
+              
                 <div className={styles.price}><span className={styles.price_lable}>Price: </span><span className={styles.price_lable_text}>${price}</span></div>
                 <div className={styles.cards__addToCard}>
-                <button className={styles.cards__addToCart}>
+                {!productCart ? <button className={styles.cards__addToCart}
+                  onClick={()=>handleAddToCart(product)}
+                >
                     <span className={styles.cart}>
                         <MdShoppingCart/>
                     </span>
                     <span>Add to cart</span>
-                </button>
-                {/* <div className={styles.cards__addToCart__counter}>
-                    <button>-</button>
-                    <input type="text" min="1"/>
-                    <button>+</button>
-                </div> */}
+                </button> :
+                <div className={styles.cards__addToCart__counter}>
+                    <button name="decrement"
+                    onClick={(e) => handleIncrementDecrement(e, parseInt(id))}
+                    >-</button>
+                    <span>{productCart.cartCount}</span>
+                    <button name="increment"
+                    onClick={(e) => handleIncrementDecrement(e, parseInt(id))}
+                    >+</button>
+                </div>}
             </div>
             <div className={styles.links}>
 
