@@ -1,0 +1,10 @@
+@use '../../variables' as var;
+@use '../../utilityClasses' as utils;
+@use '../../mediaQuery' as media;
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    
+}

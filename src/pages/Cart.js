@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar/Navbar";
 import CartContainer from "../components/CartContainer/CartContainer";
 import CartAside from "../components/CartContainer/CartAside";
 import { useSelector } from "react-redux";
+import NoProduct from "../components/NoProduct/NoProduct";
 
 
 const Cart = ({hideSearch}) => {
@@ -25,8 +26,13 @@ const Cart = ({hideSearch}) => {
    
     </div>
     <div className="cartMain">
+      {carts.length ?
+      <>
     <CartContainer carts={carts} totalPrice={totalPrice.toFixed(2)} totalItems={totalItems}/>
     <CartAside totalPrice={totalPrice.toFixed(2)} totalItems={totalItems} carts={carts}/>
+    </>:
+    <NoProduct type="cart" msg="No products in Cart"/>
+    }
     </div>
     
     </>

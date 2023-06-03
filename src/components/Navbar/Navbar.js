@@ -7,6 +7,7 @@ import styles from './navbar.module.scss';
 import profile from '../../images/profile.jpg'
 import { useSelector } from 'react-redux';
 
+
 const Navbar = ({search, setSearch, hideSearch}) => {
    
    const cart = useSelector(state => state.cart)
