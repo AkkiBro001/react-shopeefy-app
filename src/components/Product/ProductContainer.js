@@ -90,7 +90,7 @@ function handleIncrementDecrement(event, id){
       <div className={styles.ProductRelated}>
         <h3 className={styles.ProductRelated__header}>Products related to this item</h3>
         <div className={styles.ProductRelated__card}>
-        <CardsContainer products={relatedProduct}/>
+        <CardsContainer products={relatedProduct} hideSort={true}/>
           
         </div>
       </div>

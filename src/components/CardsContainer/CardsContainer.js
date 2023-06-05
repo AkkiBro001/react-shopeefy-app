@@ -4,12 +4,12 @@ import CardsSortingMenu from './CardsSortingMenu';
 import Card from './Card';
 
 
-const CardsContainer = ({sort, setSort, search, products}) => {
+const CardsContainer = ({sort, setSort, search, products, hideSort}) => {
  
   
   return (
     <div className={styles.cardsContainer}>
-      <CardsSortingMenu sort={sort} setSort={setSort} search={search}/>
+      {!hideSort && <CardsSortingMenu sort={sort} setSort={setSort} search={search}/>}
       <div className={styles.cardsContainer__cards}>
       
         {products.map(product => <Card key={product.id} {...product}/>)}
